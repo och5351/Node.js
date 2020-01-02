@@ -1,0 +1,20 @@
+.firstMenuBar{
+    padding-right: 1%;
+    padding-top: 2%;
+    padding-bottom: 1%;
+}
+.title{
+    float: left;
+}
+.login{
+    float: right;
+}
+.secondMenuBar{
+    padding-left: 1%;
+    padding-right: 1%;
+    background-color: rgba(218, 220, 230, 0.993);
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+

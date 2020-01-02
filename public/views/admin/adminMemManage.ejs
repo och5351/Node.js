@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Admin</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/mainScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/slideCss.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/contentsCSS.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/menuCSS.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        //관리자 회원관리 수강신청 취소버튼
+        function deleteSubject(id, code){
+            if(confirm('강의 신청을 취소 하시겠습니까?\n(바로 반영됩니다.)')==true){
+                $.ajax({
+                    url: '/admin/memManage/delete',
+                    type: 'post',
+                    dataType: 'text',
+                    data: {
+                        id : id,
+                        code: code
+                    },
+                    success: function (data) {
+                        alert('삭제하였습니다.');
+                        location.href = '/admin/memManage/'+id;
+                    }
+                });
+            
+            }else{
+                event.preventDefault();
+            }
+        }
+        //관리자 페이지 정보 수정
+    $(document).ready(function () {
+        
+    });
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <%- include ('../menuBar.ejs') %>       
+        <div class="contents">  <!-- 내용 --> 
+            <%if(detail!=1){%>
+            <a href='/admin/memManage' class="btn btn-info btn-sm" style="float: left;"><h2>&nbsp;&lt;&nbsp;</h2></a>
+            <%}%>
+            <h3>회원관리</h3>
+            
+            <br><br>      <form><fieldset>
+            <table width="100%" border="1">
+                
+                <%if(detail=='1'){%>
+                <tr>
+                    <th>아이디</th>    <th>이름</th>    <th>비밀번호</th>    <th>전화번호</th>    <th>등급</th>    <th>주소</th>    <th>수강신청 과목</th>  <th></th>
+                </tr>                
+                <% data.forEach(function (item, index) { %>
+                <tr>
+                    <td><%= item.id %></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.passwd %></td>
+                    <td><%= item.phone %></td>
+                    <td><%= item.grade %></td>
+                    <td><%= item.register %></td>
+                    <td>
+                        <%if(item.subject != ''){%>
+                            <% var str = item.subject; %>                           
+                            <% var strArr = str.split(',');%>
+                            <% strArr.forEach(function(cItem, index){%>                                
+                                <% data2.forEach(function(sItem, index){%>
+                                    <%if(cItem == (sItem.code).trim()){%>
+                                        <%=sItem.title%>(<%=sItem.code%>)&nbsp;&nbsp;&nbsp;
+                                    <%}%>
+                                <%})%>                                    
+                            <%})%>
+                        <%}%>                        
+                    </td>
+                    <td><a class="btn btn-default" id="memberEdit" href="/admin/memManage/<%=item.id%>"><img src="/images/edit.png" width="20" style="padding-bottom: 7%;"/></a></td>
+                </tr>
+                <% }); %>
+                <%}else{%>
+                    <tr>
+                        <th>아이디</th>    <th>이름</th>    <th>비밀번호</th>    <th>전화번호</th>    <th>등급</th>    <th>주소</th>    <th>수강신청 취소버튼</th>   <th></th>
+                    </tr>                
+                    <% data.forEach(function (item, index) { %>
+                        <script>
+                            var preId = '<%=item.id%>';
+                        </script>
+                    <tr>
+                        <td><input type="text" class="form-control" id="eId" stlye="widht:'auto'" value="<%= item.id %>"/></td>
+                        <td><input type="text" class="form-control" id="eName" stlye="widht:'auto'" value="<%= item.name %>"/></td>
+                        <td><input type="text" class="form-control" id="ePw" stlye="widht:'auto'" value="<%= item.passwd %>"/></td>
+                        <td><input type="text" class="form-control" id="ePhone" stlye="widht:'auto'" value="<%= item.phone %>"/></td>
+                        <td><input type="text" class="form-control" id="eGrade" stlye="widht:'auto'" value="<%= item.grade %>"/></td>
+                        <td><input type="text" class="form-control" id="eRegister" stlye="widht:'auto'" value="<%= item.register %>"/></td>
+                        <td>
+                        <%if(item.subject != ''){%>
+                            <% var str = item.subject; %>                           
+                            <% var strArr = str.split(',');%>
+                            <% strArr.forEach(function(cItem, index){%>                                
+                                <% data2.forEach(function(sItem, index){%>
+                                    <%if(cItem == (sItem.code).trim()){%>
+                                        <br><a type="button" onclick="deleteSubject('<%=item.id%>','<%=sItem.code%>');" class="btn btn-danger btn-sm"><%=sItem.title%> (<%=sItem.code%>)</a><br>
+                                    <%}%>
+                                <%})%>                                    
+                            <%})%><br>
+                        <%}%>                        
+                    </td>
+                    <td>                        
+                        <botton id="eUpdate" class="btn btn-primary btn-sm">적용</button>
+                    </td>
+                    <%})%>
+                <%}%>
+            </table></fieldset></form>   
+        </div>
+        <br><br><br><br><hr>
+        <div class="footer">
+            <%- include('../footer.ejs')%>
+        </div>                                    
+    </div>
+</body>
+</html>

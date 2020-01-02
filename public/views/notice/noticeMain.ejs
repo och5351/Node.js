@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>JS 2학기 과제 21521134 오찬해</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/mainScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../styles/slideCss.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/contentsCSS.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/menuCSS.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+    <body>
+        <div id="wrap">
+            <%- include ('../menuBar.ejs') %>       
+            <div class="contents">  <!-- 내용 --> 
+                <%if(loginSess != '0' && loginInfo.grade >=3){%>
+                    <a class="btn btn-success" href="/notices/noticeAdd" style="float: right;"><h3>&nbsp;+&nbsp;</h3></a>
+                    <br><br><br>
+                <% }%> 
+                <%if(data != '0'){%>
+                    <table width="100%">
+                    <tr>
+                        <th></th>    <th>제목<br><br></th>    <th>작성자<br><br></th>    <th>작성일<br><br></th>
+                        
+                    </tr>
+                    <% data.forEach(function (item, index) { %>
+                    <tr>
+                        <td style="width:10%;"><%= item.seq %><br><br></td>
+                        <td style="width:65%;text-align: left;"><a class="btn btn-default" href="/notices/noticeDetail/<%= item.seq %>"><%= item.title %></a><br><br></td>
+                        <td><%= item.id %><br><br></td>
+                        <td><%= item.date%><br><br></td>
+                        
+                    </tr>
+                    <% }); %>
+                    </table>   
+                <%}else{%>    
+                    <h2>현재 게시물이 없습니다.</h2>
+                <%}%>
+            </div>   
+            <br><br><br><br><hr>
+            <div class="footer">
+                <%- include('../footer.ejs')%>
+            </div>                                    
+        </div>
+    </body>
+</html>

@@ -1,0 +1,1749 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+	<meta http-equiv="Content-Style-Type" content="text/css"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+	<meta http-equiv="Pragma" content="No-Cache"/>
+	<meta http-equiv="Expires" content="now"/>
+	<link rel="shortcut icon" href="https://ssl.pstatic.net/imgshopping/cnsv/p/im/home/favicon.ico" type="image/x-icon"/>
+	<meta property="og:locale" content="ko_KR"><meta property="og:type" content="website"><meta property="og:locale" content="네이버쇼핑"><meta property="og:description" content="온/오프라인 상품 탐색과 쇼핑정보, 가격비교, 제품리뷰 등을 만나보세요"><meta property="og:image" content="https://ssl.pstatic.net/imgshopping/cnsv/m/im/ogtag/01_nshopping.png"><title>네이버쇼핑</title>
+	<link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/imgshopping/cnsv/p/css/_common_global_v2.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="https://ssl.pstatic.net/imgshopping/cnsv/p/css/_home_v1.css" media="all"/>
+<script type="text/javascript">
+	    document.domain = "naver.com";
+	</script>
+</head>
+
+<body id="_body">
+	<div id="wrap" class="sky_unfold"> <!--전체 화면-->
+	 	<script>
+	 		function __changeToFold() {
+	 			var el = document.getElementById("wrap");
+		 		if (navigator.appName=="Microsoft Internet Explorer") { //익스플로러 인지 확인
+		 			el.className=el.className.replace("sky_unfold", "sky_fold");
+		 		}else{
+		 			el.setAttribute("class",el.getAttribute("class").replace("sky_unfold", "sky_fold"));
+		 		}
+	 		}
+	 		var cookie = "" + document.cookie;
+	 		if (cookie.indexOf('_skyscraper_=fold') != -1) {
+	 			__changeToFold();
+	 		} else if (cookie.indexOf('_skyscraper_=unfold') != -1) {
+	 			// pass
+	 		} else {
+		 		if (document.getElementById("_body").offsetWidth < 1241) {
+					__changeToFold();
+		 		}
+	 		}
+	 	</script>
+		<div class="wrap_inner hdskin" id="wrap_inner"> <!--안쪽 화면-->
+			<div class="wrap_fixed" style="position:relative;" id="wrap_fixed">
+					<div id="u_skip">
+	                    <a href="#lnb" onclick="document.getElementById('lnb').tabIndex=-1;document.getElementById('lnb').focus();return false;"><span>메인 메뉴로 바로가기</span></a>
+	                    <a href="#content" onclick="document.getElementById('content').tabIndex=-1;document.getElementById('content').focus();return false;"><span>본문으로 바로가기</span></a>
+	                </div>
+
+	<!-- header -->
+	<div id="header" class="g_header"><!-- [D] 상단고정 형태일 경우 class="on" 추가 -->
+		<iframe width="100%" src="about:blank" frameborder="0" title="버그픽스용" class="bug_fix"></iframe>
+		<div class="co_header_fix">
+			<div class="co_header co_header_gnb">
+				<div class="co_header_inner">
+					<div class="co_site">
+						<a href="http://www.naver.com" class="co_naver N=a:naver" title="나의 경쟁력, 네이버">NAVER</a><!--N=a:GNB.naver-->
+						<a href="https://order.pay.naver.com/home?frm=s_logo" class="co_npay _naver_pay N=a:naverpay" title="네이버 아이디로 간편구매, 네이버페이">네이버페이</a><!--N=a:GNB.naverpay-->
+					</div>
+
+					<!-- GNB 템플릿 적용부 -->
+					<div class="shopping_gnb_wrap">
+						<div id="gnb" class="gnb_dark_type2">
+							<!-- <script src="http://gn.naver.com/template/gnb_utf8.nhn"></script> -->
+						</div>
+					</div>
+					<!--//GNB 템플릿 적용부 -->
+				</div>
+				<span class="g_mask_black"></span>
+			</div>
+
+			<div class="co_header co_header_shop">
+				<div class="co_header_inner">
+					<h1 class="co_tit">
+						<a href="/home/p/index.nhn" class="g_logo_window N=a:SNB.home">네이버 쇼핑</a><!--N=a:SNB.home-->
+					</h1>
+					<div class="co_srh">
+						<h2 class="blind">검색영역</h2>
+
+						<form class="_search_form" name="search" method="get" action="" onsubmit="return false;">
+						<fieldset>
+						<legend>네이버쇼핑 검색</legend>
+						<div id="autocompleteWrapper" class="co_srh_area">
+							<input type="text" name="query" class="co_srh_input _input N=a:SNB.search" accesskey="s" title="검색어 입력" maxlength="255" autocomplete="off" value="">
+							<input type="hidden" name="cat_id" >
+							<input type="hidden" name="frm" id="frm" value="NVSHSRC">
+
+							<a href="#" class="co_srh_auto _toggle">
+								<span class="co_more _toggleIcon">자동완성 펼치기</span><!-- [D] 활성화 시 <span class="co_more on">자동완성 접기</span> 변경 , 자동완성 끄기일경우 <span class="co_more none">자동완성 기능끄기</span> 변경 -->
+							</a>
+							<!-- 자동완성 툴팁 레이어 -->
+							<div class="co_ly_tooltip">
+								<iframe width="100%" src="about:blank" frameborder="0" title="버그픽스용" class="bug_fix"></iframe>
+								<span class="co_tooltip_inner _toggleTooltip">자동완성 펼치기</span>
+							</div><!-- [D] 자동완성 접기일 경우 //자동완성 접기//로 텍스트 변경 -->
+							<!-- //자동완성 툴팁 레이어 -->
+							<a href="#" class="co_srh_btn _search N=a:SNB.search" _normal="SNB" _lite="GNL" _clickCode="search">네이버 검색</a>
+							<!-- 자동완성 레이어 -->
+							<div class="co_ly_auto _suggestView">
+								<iframe width="100%" src="about:blank" frameborder="0" title="버그픽스용" class="bug_fix"></iframe>
+								<div class="co_auto_fix">
+									<!-- [AU] _noticeArea -->
+									<div class="co_basis _noticeArea">
+										<p class="co_basis_txt">현재 자동완성 기능을 사용하고 계십니다.</p>
+									</div>
+									<!-- [AU] _resultArea -->
+									<div class="co_basis _resultArea" style="display: none">
+										<!-- [AU] _resultBox -->
+										<ul class="_resultBox"></ul>
+										<ul class="_resultBox"></ul>
+										<ul class="_resultBox"></ul>
+										<ul class="_resultBox"></ul>
+									</div>
+									<div class="co_help">
+										<a href="https://help.naver.com/support/contents/contents.nhn?serviceNo=606&categoryNo=1994" target="_blank">도움말</a><!--N=a:sch.achelp-->
+										<span class="co_bar">|</span>
+										<!-- [AU] _off -->
+										<a href="#" class="_off">기능끄기</a><!--N=a:sch.acoff-->
+										<div class="co_ly_help">기능을 다시 켤 때는 <span class="co_ico_srh">검색창</span>을 클릭하세요</div>
+									</div>
+									<!-- [AU] _preview -->
+									<div class="co_expand _previewArea">
+									</div>
+
+									<!-- Theme -->
+									<div class="co_expand _themeArea">
+										<div class="co_expand_inner _themeInnerArea">
+											<a href="#" class="co_goods N=a:sch.eventimage">
+												<img src="#" width="100" height="100" alt="">
+												<strong class="co_theme_name"></strong>
+												<div class="co_date"></div>
+												<span class="co_compare">기획전 바로가기</span>
+											</a>
+											<!--N=a:sch.eventimage-->
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--code@-->
+							<!-- //자동완성 레이어 -->
+						</div>
+						<a href="#" class="co_srh_detail N=a:SNB.detailsearch" id="_detailSearchButton">
+							<span class="co_detail_txt">상세검색</span>
+							<span class="co_detail_more">펼치기</span><!-- [D] 활성화 시 <span class="co_detail_more on">접기</span> 변경 -->
+						</a><!--N=a:SNB.detailsearch-->
+						<div class="co_ly_detail" id="_detailSearchDiv"><!-- [D] 활성화 시 class="on" 추가 -->
+							<iframe width="100%" src="about:blank" frameborder="0" title="버그픽스용" class="bug_fix"></iframe>
+							<div class="co_detail_fix">
+								<strong class="co_detail_tit">상세검색</strong>
+								<div class="co_detail">
+									<p class="co_preview _preview"></p><!-- [D] 2줄 이상일 경우 class="co_scroll" 추가 -->
+									<table border="1" class="co_tbl_detail" role="presentation">
+									<colgroup><col style="width:171px"><col></colgroup>
+									<tbody>
+									<tr class="co_top">
+									<td class="th">
+										<label class="stit" for="lb_srh_basis"><strong>기본검색</strong></label>
+									</td>
+									<td>
+										<input type="text" name="" id="lb_srh_basis" class="co_srh_input _base" value="" maxlength=50>
+									</td>
+									</tr>
+									<tr class="co_top">
+									<td class="th"><span class="stit"><strong>상세검색</strong></span></td>
+									<td><p class="co_dsc"><strong class="co_bright">*</strong>기본 검색의 결과 범위를 줄이고자 할 때 사용합니다.<br>여러개의 단어를 입력할 때는<span class="co_bright">쉼표 (,)</span>로 구분해서 입력하세요.</p></td>
+									</tr>
+									<tr>
+									<td class="th"><label for="lb_srh_include">결과내 재검색 단어 (+)</label></td>
+									<td><input type="text" name="" id="lb_srh_include" class="co_srh_input _include" maxlength="50"></td>
+									</tr>
+									<tr>
+									<td class="th"><label for="lb_srh_exact">정확히 일치하는 문장 (“”)</label></td>
+									<td><input type="text" name="" id="lb_srh_exact" class="co_srh_input _exact" maxlength="50"></td>
+									</tr>
+									<tr>
+									<td class="th"><label for="lb_srh_exclude">제외하는 단어 (-)</label></td>
+									<td>
+										<input type="text" name="" id="lb_srh_exclude" class="co_srh_input _exclude" maxlength="50">
+										<!--  
+										<ul class="co_srh_exclude">
+										<li class="N=a:sch*d.exabroad"><input type="checkbox" name="" id="lb_exclude1" class="_exclude_overseas"><label for="lb_exclude1">해외상품 제외</label></li><!--N=a:sch*d.exabroad--
+										<li class="N=a:sch*d.exused"><input type="checkbox" name="" id="lb_exclude2" class="_exclude_used"><label for="lb_exclude2">중고상품 제외</label></li><!--N=a:sch*d.exused--
+										</ul>
+										-->
+									</td>
+									</tr>
+									</tbody>
+									</table>
+								</div>
+								<p class="co_or_none"><strong class="co_bright">*</strong> 네이버쇼핑내에선 OR 검색어는 제공하지 않습니다.</p>
+								<div class="co_btn">
+									<a href="https://help.naver.com/support/contents/contents.nhn?serviceNo=606&categoryNo=1911" target="_blank" class="co_advise N=a:sch*d.help">도움말<span></span></a><!--N=a:sch*d.help-->
+									<a href="#" class="co_refresh N=a:sch*d.reset"><span></span>초기화</a><!--N=a:sch*d.reset-->
+									<a href="#" class="co_confirm N=a:sch*d.search">검색</a><!--N=a:sch*d.search-->
+									<a href="#" class="co_cancel N=a:sch*d.close">닫기</a><!--N=a:sch*d.close-->
+								</div>
+								<a href="#" class="co_close N=a:sch*d.x">상세검색 닫기</a><!--N=a:sch*d.x-->
+							</div>
+						</div>
+						</fieldset>
+						</form>
+					</div>
+
+					<!-- 카테고리 -->
+					<a href="#" class="co_digital_btn N=a:SNB.digicate">디지털/가전</a><!--N=a:SNB.digicate-->
+					<a href="#" class="co_birth_btn N=a:SNB.babycate">출산/육아</a><!--N=a:SNB.babycate-->
+					<a href="#" class="co_category_btn N=a:SNB.category">카테고리</a><!--N=a:SNB.category-->
+					<div class="co_ly_category"><!-- [D] 선택시 class="on" 추가 -->
+						<iframe width="100%" src="about:blank" frameborder="0" title="버그픽스용" class="bug_fix"></iframe>
+						<h2 class="blind">카테고리 메뉴</h2>
+						<div class="co_category_menu">
+						</div>
+					</div>
+					<!-- //카테고리 -->
+
+					<div class="co_shop_site" id="co_shop_layer">
+						<a href="https://search.shopping.naver.com/best100v2/main.nhn" class="co_best N=a:SNB.best100">베스트 100</a><!--N=a:SNB.best100-->
+						<span class="co_bar">|</span>
+						<a href="https://search.shopping.naver.com/mall/mall.nhn" class="co_mall N=a:SNB.mall">몰전체보기</a><!--N=a:SNB.mall-->
+					</div>
+
+					<div class="co_my" id="_myPageWrapper">
+						<a href="#" class="co_my_btn N=a:SNB.shoppingmy">쇼핑MY</a><!--N=a:SNB.shoppingmy-->
+						<div class="co_ly_mypage">
+							<iframe width="100%" src="about:blank" frameborder="0" title="버그픽스용" class="bug_fix"></iframe>
+							<div class="co_bg_top"></div>
+							<div class="co_bg_bottom"></div>
+							<div class="co_bg_cont">
+								<ul class="co_cont_list">
+								<li><a href="#" class="N=a:SNB*m.home">MY 홈</a><!--N=a:SNB*m.home--></li>
+								<li><a href="#" class="N=a:SNB*m.my">찜한 상품</a><!--N=a:SNB*m.my--></li>
+								<li><a href="#" class="N=a:SNB*m.shop">찜한 스토어</a><!--N=a:SNB*m.shop--></li>
+								</ul>
+								<ul class="co_cont_list">
+								<li><a href="#" class="N=a:SNB*m.cart">장바구니</a><!--N=a:SNB*m.cart--></li>
+								<li><a href="#" class="N=a:SNB*m.order">주문확인/배송조회</a><!--N=a:SNB*m.order--></li>
+								<li><a href="#" class="N=a:SNB*m.coupon">쿠폰</a><!--N=a:SNB*m.coupon--></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<span class="g_mask_white"></span>
+				<span class="g_mask_black"></span>
+			</div>
+			<!-- lnb -->
+			<div id="lnb" class="g_lnb">
+			<div id="lnb_bar" class="co_lnb">
+				<h2 class="blind">메인 메뉴</h2>
+				<!-- [D] 좌우버튼 노출시 class="g_rolling" 추가 -->
+ 				<div class="g_menu_area">
+					<ul id="gnb_menu_layer" class="co_menu">
+					<li menu-code="HOME" ext-mode="Y" class="co_lnb_home">
+						<a href="/home/p/index.nhn" class="N=a:LNB.home on"><em><span>홈</span></em></a><!--N=a:LNB.home-->
+					</li>
+					<li menu-code="DEPT" ext-mode="N" class="co_lnb_depart">
+						<a href="/department/home" class="N=a:LNB.wdep"><em><span>백화점윈도</span></em></a><!--N=a:LNB.wdep-->
+					</li>
+					<li menu-code="OULT" ext-mode="N" class="co_lnb_oulet">
+						<a href="/outlet/home" class="N=a:LNB.wout"><em><span>아울렛윈도</span></em></a><!--N=a:LNB.wout-->
+					</li>
+					<li menu-code="STWD" ext-mode="N" class="co_lnb_style">
+						<a href="/style/home" class="N=a:LNB.wstl"><em><span>스타일윈도</span></em></a><!--N=a:LNB.wstl-->
+					</li>
+					<li menu-code="DSWD" ext-mode="N" class="co_lnb_designer">
+                        <a href="https://swindow.naver.com/designer/home" class="N=a:LNB.wdsn"><em><span>디자이너윈도</span></em></a>
+					</li>
+					<li menu-code="BTWD" ext-mode="N" class="co_lnb_beauty">
+						<a href="https://swindow.naver.com/beauty/home" class="N=a:LNB.beautywindow"><em><span>뷰티윈도</span></em></a><!--N=a:LNB.beautywindow-->
+					</li>
+					<li menu-code="LVWD" ext-mode="N" class="co_lnb_living">
+						<a href="/living" class="N=a:LNB.wliving"><em><span>리빙윈도</span></em></a><!--N=a:LNB.wliving--><!-- [D] 선택시 class="on" 추가 -->
+						<ul class="co_lnb_sub">
+							<li menu-code="HMLV" ext-mode="N" prnt-menu-code="LVWD" class="co_sub_deco"><a href="/living/homeliving/home" class="N=a:LNB.wdeco"><span>홈&amp;데코</span></a><!--N=a:LNB.wdeco--></li>
+							<li menu-code="HDMD" ext-mode="N" prnt-menu-code="LVWD" class="co_sub_handmade"><a href="/living/handmade/home" class="N=a:LNB.whand"><span>핸드메이드</span></a><!--N=a:LNB.whand--></li>
+						</ul>
+					</li>
+					<li menu-code="FRWD" ext-mode="N" class="co_lnb_fresh">
+						<a href="/fresh" class="N=a:LNB.wfresh"><em><span>푸드윈도</span></em></a><!--N=a:LNB.wfresh-->
+						<ul class="co_lnb_sub">
+							<li menu-code="DRTF" ext-mode="N" prnt-menu-code="FRWD" class="co_sub_producer"><a href="https://swindow.naver.com/directfarm/home" class="N=a:LNB.wsanji"><span>산지직송</span></a><!--N=a:LNB.wsanji--></li>
+							<li menu-code="LCFD" ext-mode="N" prnt-menu-code="FRWD" class="co_sub_region"><a href="https://swindow.naver.com/localfood/home" class="N=a:LNB.wlocal"><span>지역명물</span></a><!--N=a:LNB.wlocal--></li>
+							<li menu-code="CNVN" ext-mode="N" prnt-menu-code="FRWD" class="co_sub_convenience"><a href="https://swindow.naver.com/cvs/home" class="N=a:LNB.wcvs"><span>편의점</span></a><!--N=a:LNB.wcvs--></li>
+						</ul>
+					</li>
+					<li menu-code="KSWD" ext-mode="N" class="co_lnb_kids">
+						<a href="https://swindow.naver.com/kids/home" class="N=a:LNB.wkids"><em><span>키즈윈도</span></em></a><!--N=a:LNB.wkids-->
+					</li>
+					<li menu-code="PEWD" ext-mode="N" class="co_lnb_pet">
+						<a href="https://swindow.naver.com/pet/home" class="N=a:LNB.pet"><em><span>펫윈도</span></em></a>
+					</li>
+					<li menu-code="PLWD" ext-mode="N" class="co_lnb_play">
+						<a href="https://swindow.naver.com/play/home" class="N=a:LNB.wplay"><em><span>플레이윈도</span></em></a><!--N=a:LNB.wplay-->
+					</li>
+					<li menu-code="ATWD" ext-mode="N" class="co_lnb_art">
+						<a href="/art/home" class="N=a:LNB.wart"><em><span>아트윈도</span></em></a>
+					</li>
+					<li menu-code="HOTD" ext-mode="Y" class="co_lnb_hotdeal">
+						<span class="co_lnb_bar">|</span>
+						<a href="/hotdeal/p/index.nhn" class="N=a:LNB.hotdeal "><em><span>핫딜</span></em></a><!--N=a:LNB.hotdeal-->
+						<ul class="co_lnb_sub">
+							<li menu-code="SCBT" ext-mode="Y" prnt-menu-code="HOTD" class="co_sub_social"><a href="/hotdeal/p/social/index.nhn" class="N=a:LNB.socialbest "><span>소셜베스트</span></a><!--N=a:LNB.socialbest--></li>
+							<li menu-code="LKTD" ext-mode="Y" prnt-menu-code="HOTD" class="co_sub_lucky"><a href="/hotdeal/p/luckto/index.nhn" class="N=a:LNB.luckytoday "><span>럭키투데이</span></a><!--N=a:LNB.luckytoday--></li>
+						</ul>
+					</li>
+					<li menu-code="FOWD" ext-mode="N" class="g_lnb_foreign">
+						<a href="/foreign/home" class="N=a:LNB.globalwindow"><em><span>해외직구</span></em></a><!--N=a:LNB.globalwindow-->
+					</li>
+					<li menu-code="TMSP" ext-mode="Y" class="co_lnb_theme">
+						<a href="/plan2/p/index.nhn" class="N=a:LNB.theme "><em><span>기획전</span></em></a><!--N=a:LNB.theme-->
+					</li>
+					</ul>
+					
+					<a href="#" role="button" class="g_btn_prev"><em><span>이전 메뉴 보기</span></em></a>
+					<a href="#" role="button" class="g_btn_next"><em><span>다음 메뉴 보기</span></em></a>
+				</div>
+
+			<!-- <a href="#" class="g_view_info2 N=a:LNB.guide _click[homeBase.popGuideShow();return false;]">이용안내 보기</a>N=a:LNB.guide -->
+					</div>
+			<span class="g_lnb_mask"></span>
+		</div>
+			<!-- //lnb -->
+		</div>
+	</div>
+	<!-- //header -->
+
+
+<hr>
+					<div id="container_home">
+							<!-- 핫딜 소셜베스트 GNB 메뉴 -->
+							<!-- //핫딜 소셜베스트 GNB 메뉴 -->
+
+							
+<!-- new shopping tutorial -->
+	<div class="home_tutorial_pop" id="home_tutorial_pop" style="display:none;">
+		<div class="tutorial_content_wrap">
+			
+			<div class="blind">
+				<h2>New N쇼핑</h2>
+				<p>
+					ALL NEW NAVER SHOPPING<br>
+					백화점, 아울렛, 홍대, 가로수길 신상품부터 핸드메이드, 산지직송, 지역명물까지
+					오프라인과 온라인을 아우르는 세상의 모든 상품정보를 PC와 모바일에서 보실 수 있습니다.
+				</p>
+			</div>
+			<div class="tutorial_content">
+				<ul>
+					<li><img id="home_pop_img" src="https://ssl.pstatic.net/imgshopping/cnsv/p/im/home/pop/home_pop_1_v3.png" alt="네이버 지식쇼핑이 네이버쇼핑으로 새로워졌습니다!" /></li>
+				</ul>
+				<div class="tutorial_navigation">
+					<h3 class="blind">네이버쇼핑 튜토리얼 네비게이션</h3>
+					<a href="#" class="prev _click[homeBase.popPrev();return false;]"><span class="blind">이전</span></a>
+					<div class="page">
+						<span class="blind">현재 페이지</span>
+						<!-- [d] 숫자는 num1 클래스부터 num4 클래스 까지 있습니다. -->
+						<span id="home_pop_page1" class="num num1"><span id="home_pop_page2" class="blind">1</span></span>
+						<span class="blind">전체 페이지</span>
+						<span class="total_page"><span class="blind">/4</span></span>
+					</div>
+					<a href="#" class="next _click[homeBase.popNext();return false;]"><span class="blind">다음</span></a>
+				</div>
+			</div>
+		</div>
+		<a id="home_pop_close2" href="#" class="btn_tutorial_none _click[homeBase.popClose2();return false;]">다시 보지 않기</a><!-- [D] 클릭시 class="on" 추가 -->
+		<a href="#" class="close _click[homeBase.popClose();return false;]"><span class="blind">닫기</span></a>
+	</div>
+	<div class="dimmed" id="home_dimmed" style="display:none;"></div>
+	<!-- //new shopping tutorial -->
+
+
+	<!-- container -->
+	<div id="container">
+
+		<!-- content -->
+		<div id="content" class="content_home">
+			<h2 class="blind">네이버쇼핑 홈</h2>
+			
+			<div class="section_wrap">
+			
+				<!-- grid -->
+				<div class="grid">
+			
+				<div class="grid-item grid-item-hgt2">
+				
+				<div class="section_cell category_cell" name="t121876" id="t121876">
+					<span class="mask"></span>
+					<div class="category_area" id="home_category_area">
+						<div class="co_category_menu">
+							<h3 class="category_tit"><em>CATEGORY</em></h3>
+							<ul class="co_category_list">
+							<li class="co_menu_wear">
+							
+								<a href="#" id="home_co_menu_wear" class="_click[homeBase.ctgShow('co_menu_wear');return false;]"><em>패션의류</em></a><!--N=a:ctg*l.50000000-->
+
+								<!-- [D] 선택시 class="on" 추가 -->
+								<div class="co_ly_inner" id="home_co_menu_wear_inner"></div>
+							</li>
+							<li class="co_menu_sundries">
+								<a href="#" id="home_co_menu_sundries" class="_click[homeBase.ctgShow('co_menu_sundries');return false;]"><em>패션잡화</em></a><!--N=a:ctg*l.50000001-->
+								<div class="co_ly_inner" id="home_co_menu_sundries_inner"></div>
+							</li>
+							<li class="co_menu_beauty">
+								<a href="#" id="home_co_menu_beauty" class="_click[homeBase.ctgShow('co_menu_beauty');return false;]"><em>화장품/미용</em></a><!--N=a:ctg*l.50000002-->
+								<div class="co_ly_inner" id="home_co_menu_beauty_inner"></div>
+							</li>
+							<li class="co_menu_digital">
+								<a href="#" id="home_co_menu_digital" class="_click[homeBase.ctgShow('co_menu_digital');return false;]"><em>디지털/가전</em></a><!--N=a:ctg*l.50000003-->
+								<div class="co_ly_inner" id="home_co_menu_digital_inner"></div>
+							</li>
+							
+							<li class="co_menu_interior">
+								<a href="#" id="home_co_menu_interior" class="_click[homeBase.ctgShow('co_menu_interior');return false;]"><em>가구/인테리어</em></a><!--N=a:ctg*l.50000004-->
+								<div class="co_ly_inner" id="home_co_menu_interior_inner"></div>
+							</li>
+							<li class="co_menu_birth">
+								<a href="#" id="home_co_menu_birth" class="_click[homeBase.ctgShow('co_menu_birth');return false;]"><em>출산/육아</em></a><!--N=a:ctg*l.50000005-->
+								<div class="co_ly_inner" id="home_co_menu_birth_inner"></div>
+							</li>
+							<li class="co_menu_food">
+								<a href="#" id="home_co_menu_food" class="_click[homeBase.ctgShow('co_menu_food');return false;]"><em>식품</em></a><!--N=a:ctg*l.50000006-->
+								<div class="co_ly_inner" id="home_co_menu_food_inner"></div>
+							</li>
+							<li class="co_menu_sports">
+								<a href="#" id="home_co_menu_sports" class="_click[homeBase.ctgShow('co_menu_sports');return false;]"><em>스포츠/레저</em></a><!--N=a:ctg*l.50000007-->
+								<div class="co_ly_inner" id="home_co_menu_sports_inner"></div>
+							</li>
+							<li class="co_menu_life">
+								<a href="#" id="home_co_menu_life" class="_click[homeBase.ctgShow('co_menu_life');return false;]"><em>생활/건강</em></a><!--N=a:ctg*l.50000008-->
+								<div class="co_ly_inner" id="home_co_menu_life_inner"></div>
+							</li>
+							<li class="co_menu_culture">
+								<a href="#" id="home_co_menu_culture" class="_click[homeBase.ctgShow('co_menu_culture');return false;]"><em>여행/문화</em></a><!--N=a:ctg*l.50000009-->
+								<div class="co_ly_inner" id="home_co_menu_culture_inner"></div>
+							</li>
+							<li class="co_menu_duty">
+								<a href="#" id="home_co_menu_duty" class="_click[homeBase.ctgShow('co_menu_duty');return false;]"><em>면세점</em></a><!--N=a:ctg*l.50000010-->
+								<div class="co_ly_inner" id="home_co_menu_duty_inner"></div>
+							</li>
+							</ul>
+						</div>
+						<div class="category_info">
+							<h3 class="category_tit_popular"><em>인기상품</em></h3>
+							<div class="category_popular">
+								<ul>
+								<li>
+									<a href="https://shopping.naver.com/hotdeal/p/luckto/index.nhn?id=2283087&cat=29&sort=rcnt" class="img_area" target="_blank"><img src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bp1w4iz76n.jpg" width="183" height="262" alt="하루 종일 촉촉하게 무선 미니 가습기 만칠천오백원"></a><!--N=a:ctg.item,i:121876-->
+								</li>
+								</ul>
+							</div>
+							<h3 class="category_tit_tag"><em>추천태그</em></h3>
+							<div class="category_tag">
+					<a href="https://search.shopping.naver.com/search/all.nhn?query=%EC%88%8F%ED%8C%A8%EB%94%A9&cat_id=&frm=NVSHATC">#숏패딩</a><!--N=a:ctg.tag,i:121876-->
+					<a href="https://search.shopping.naver.com/search/all.nhn?query=%EC%97%B0%EB%A7%90%EC%9B%90%ED%94%BC%EC%8A%A4&cat_id=&frm=NVSHATC">#연말원피스</a><!--N=a:ctg.tag,i:121876-->
+					<a href="https://search.shopping.naver.com/search/all.nhn?query=%ED%95%AB%ED%8C%A9&cat_id=&frm=NVSHATC">#핫팩</a><!--N=a:ctg.tag,i:121876-->
+					<a href="https://search.shopping.naver.com/search/all.nhn?query=%EC%B4%88%EB%93%B1%ED%95%99%EC%83%9D%EC%B1%85%EA%B0%80%EB%B0%A9&cat_id=&frm=NVSHATC">#초등학생책가방</a><!--N=a:ctg.tag,i:121876-->
+					<a href="https://search.shopping.naver.com/search/all.nhn?query=%EB%B2%BD%ED%8A%B8%EB%A6%AC&cat_id=&frm=NVSHATC">#벽트리</a><!--N=a:ctg.tag,i:121876-->
+					<a href="https://search.shopping.naver.com/search/all.nhn?query=%EC%97%90%EC%96%B4%ED%94%84%EB%9D%BC%EC%9D%B4%EC%96%B4&cat_id=&frm=NVSHATC">#에어프라이어</a><!--N=a:ctg.tag,i:121876-->
+					<a href="https://search.shopping.naver.com/search/all.nhn?query=%EB%AA%A8%EC%9C%A0%EC%9C%A0%EC%82%B0%EA%B7%A0&cat_id=&frm=NVSHATC">#모유유산균</a><!--N=a:ctg.tag,i:121876-->
+					<a href="https://search.shopping.naver.com/search/all.nhn?query=%EC%B0%A8%EB%9F%89%EC%9A%A9%ED%8F%AC%ED%8A%B8&cat_id=&frm=NVSHATC">#차량용포트</a><!--N=a:ctg.tag,i:121876-->
+					</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+<div class="grid-item grid-item-hgt2">
+
+					<div class="section_cell" name="t121881" id="t121881">
+					<div class="main_banner">
+						<div class="main_banner_list">
+							<ul>
+					<a id="homeTpl1Link121881" class="img_area" href="https://swindow.naver.com/pet/specialEvent/detail/46667"><img id="homeTpl1Img121881" height="496" width="308" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bq7rgf3v7v.jpg"  alt="펫프리 모집 3탄 단골 고객 리뷰에 자신있다면 펫윈도 프로 리뷰어에 도전해보세요 12월 9일부터 12월 29일까지"></a><!--N=a:nss.01ban,i:121881-->
+					</ul>
+						</div>
+					<a class="btn_pre _click[homeBase.goTpl1Prev('121881');return false;]" href="#">이전 배너 보기</a>
+							<a class="btn_next _click[homeBase.goTpl1Next('121881');return false;]" href="#">다음 배너 보기</a>
+							
+							<div class="banner_page">
+								<a id="homeTpl1Page121881_1" class=" _click[homeBase.goTpl1Page('121881', '1');return false;]" href="#">1번 배너보기</a>
+								<a id="homeTpl1Page121881_2" class=" _click[homeBase.goTpl1Page('121881', '2');return false;]" href="#">2번 배너보기</a>
+								<a id="homeTpl1Page121881_3" class=" _click[homeBase.goTpl1Page('121881', '3');return false;]" href="#">3번 배너보기</a>
+								<a id="homeTpl1Page121881_4" class=" _click[homeBase.goTpl1Page('121881', '4');return false;]" href="#">4번 배너보기</a>
+								<a id="homeTpl1Page121881_5" class=" _click[homeBase.goTpl1Page('121881', '5');return false;]" href="#">5번 배너보기</a>
+								<a id="homeTpl1Page121881_6" class=" _click[homeBase.goTpl1Page('121881', '6');return false;]" href="#">6번 배너보기</a>
+								<a id="homeTpl1Page121881_7" class=" _click[homeBase.goTpl1Page('121881', '7');return false;]" href="#">7번 배너보기</a>
+								<a id="homeTpl1Page121881_8" class=" _click[homeBase.goTpl1Page('121881', '8');return false;]" href="#">8번 배너보기</a>
+								<a id="homeTpl1Page121881_9" class=" _click[homeBase.goTpl1Page('121881', '9');return false;]" href="#">9번 배너보기</a>
+								<a id="homeTpl1Page121881_10" class=" _click[homeBase.goTpl1Page('121881', '10');return false;]" href="#">10번 배너보기</a>
+								<a id="homeTpl1Page121881_11" class=" _click[homeBase.goTpl1Page('121881', '11');return false;]" href="#">11번 배너보기</a>
+								<a id="homeTpl1Page121881_12" class="on _click[homeBase.goTpl1Page('121881', '12');return false;]" href="#">12번 배너보기</a>
+								</div>								
+					<span class="mask_top"></span><span class="mask_right"></span><span class="mask_bottom"></span><span class="mask_left"></span>
+					</div>
+					</div>
+
+				</div>
+										<div class="grid-item">
+
+					<div class="section_cell" name="t121872" id="t121872"><!-- type 7 -->
+						<span class="mask"></span>
+						<div class="list_type item">
+							<div class="banner_item">
+								<img height="62" width="308" alt="딱! 지금 이 시간만 특가" src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/18/0503/ntrxoonvstp.jpg">
+								<span class="mask"></span>
+								<div class="banner_tit">
+									<span class="tag_bg">
+										<span class="mask"></span>
+										<em>딱! 지금 이 시간만 특가</em>
+									</span>
+								</div>
+							</div>
+							<ul>
+							
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/hotdeal/p/luckto/index.nhn?id=2288044&cat=2&sort=rcnt">
+									<span class="img_area">
+										<img height="100" width="102" alt="촉촉한 프로폴리스 토너" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6azmd858wfw.jpg">
+									</span>
+									<span class="txt">촉촉한 프로폴리스 토너</span>
+								</a><!--N=a:nss.07img,i:121872-->
+								<em>반값 할인</em>
+							</li>
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/hotdeal/p/luckto/index.nhn?id=2298617&cat=3&sort=rcnt">
+									<span class="img_area">
+										<img height="100" width="102" alt="크리넥스 에어셀 화장지" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6azmdc4qqxl.jpg">
+									</span>
+									<span class="txt">크리넥스 에어셀 화장지</span>
+								</a><!--N=a:nss.07img,i:121872-->
+								<em>2만 원대</em>
+							</li>
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/hotdeal/p/luckto/index.nhn?id=2298033&cat=97&sort=rcnt">
+									<span class="img_area">
+										<img height="100" width="102" alt="캘빈클라인 진 미드 재킷" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6azmddu4ysw.jpg">
+									</span>
+									<span class="txt">캘빈클라인 진 미드 재킷</span>
+								</a><!--N=a:nss.07img,i:121872-->
+								<em>23%↓</em>
+							</li>
+					</ul>
+						</div>
+					</div>
+
+				</div><div class="grid-item grid-item-hgt2">
+					<div class="section_cell" name="t121873" id="t121873"><!-- type 2 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/15/0714/djau2c7u6ge.png" alt="쇼핑몰 소식">
+								</em>
+								<strong>쇼핑몰 소식</strong>
+								</h3>
+						</div>
+						<div class="list_type basic">
+							<ul>
+
+					<li>
+								<a class="link_a" href="http://www.0to7.com/ccs/common/gateway?channelId=0001&returnUrl=http://www.0to7.com/dms/exhibit/detail_new?exhibitId=7018" target="_blank">
+									<span class="img_area">
+										<img height="90" width="130" alt="아토팜 꿀템 추가 5% 할인" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bp8iv1gj1w.jpg">
+										<span class="mask"></span>
+										
+									</span>
+									<span class="txt">아토팜 꿀템 추가 5% 할인</span>
+								</a><!--N=a:nss.02mimg,i:121873-->
+								<span class="deadline">제로투세븐</span>
+							</li>
+					<li>
+								<a class="link_a" href="https://shop.descentekorea.co.kr/event/detail.do?seq=46870&utm_source=da_NnewsPC&utm_medium=dst&utm_campaign=new&utm_term=skiwear2" target="_blank">
+									<span class="img_area">
+										<img height="90" width="130" alt="스키어들의 찐리뷰! 데상트 스키웨어 10%↓" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bp8j18vt9u.jpg">
+										<span class="mask"></span>
+										
+									</span>
+									<span class="txt">스키어들의 찐리뷰! 데상트 스키웨어 10%↓</span>
+								</a><!--N=a:nss.02mimg,i:121873-->
+								<span class="deadline">데상트코리아</span>
+							</li>
+					</ul>
+						</div>
+						<div class="list_type magazine">
+							<ul>
+							
+					<li>
+								<a class="link_a" href="http://mall.hanssem.com/plan/11198.html" target="_blank">
+									<span class="img_area">
+										<img height="60" width="90" alt="초슬림 온열 패드 매트리스" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bp8j2t0qf2.jpg">
+										<span class="mask"></span>
+									</span>
+									<span class="tit">한샘몰</span>
+									<span class="txt">초슬림 온열 패드 매트리스</span>
+								</a><!--N=a:nss.02simg,i:121873-->
+							</li>
+					<li>
+								<a class="link_a" href="http://www.okmall.com/product/product.html?pID=20000680^20000680&Se=&TC=&Ca=&mitem=&page=1&brand=%B3%AA%C0%CC%C5%B0%28NIKE%29^%C7%C7%BF%A4%B6%F3%BA%A5%28FJALLRAVEN%29^%C5%AC%B6%F3%C5%CD%B9%C2%C1%A8%28KLATTERMUSEN%29^%B8%B6%B9%AB%C6%AE%28MAMMUT%29^%B8%F3%C3%F2%B6%F3%28MONTURA%29^%BA%ED%B7%A2%B4%D9%C0%CC%BE%C6%B8%F3%B5%E5%28Black%20Diamond%29^%C6%C4%C5%B8%B0%ED%B4%CF%BE%C6%28patagonia%29^%C7%AA%B8%B6%28PUMA%29^%B3%EB%BD%BA%C6%E4%C0%CC%BD%BA%28The%20North%20Face%29^%C4%AB%BA%CE%28KAVU%29^%BE%C6%C5%" target="_blank">
+									<span class="img_area">
+										<img height="60" width="90" alt="스포츠 브랜드 동계 아우터" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bp8j4bdust.jpg">
+										<span class="mask"></span>
+									</span>
+									<span class="tit">오케이몰</span>
+									<span class="txt">스포츠 브랜드 동계 아우터</span>
+								</a><!--N=a:nss.02simg,i:121873-->
+							</li>
+					<li>
+								<a class="link_a" href="http://www.tmon.co.kr/entry/?jp=80022&ln=799918" target="_blank">
+									<span class="img_area">
+										<img height="60" width="90" alt="히트 상품 하나만 사도 무배!" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bp8j5vdgz4.jpg">
+										<span class="mask"></span>
+									</span>
+									<span class="tit">티몬</span>
+									<span class="txt">히트 상품 하나만 사도 무배!</span>
+								</a><!--N=a:nss.02simg,i:121873-->
+							</li>
+					</ul>
+						</div>
+					</div>
+	
+				</div>
+<div class="grid-item">
+
+					<div class="section_cell" name="t121870" id="t121870"><!-- type 4 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/16/0712/m55lsdu7baj.png" alt="놓치면 후회할 럭키투데이">
+								</em>
+								<strong>놓치면 후회할 럭키투데이</strong>
+							</h3>
+						</div>
+						<div class="list_type hotdeal">
+							<ul>
+							
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/hotdeal/p/luckto/index.nhn?id=2297378&cat=98&sort=rcnt">
+									<span class="img_area">
+										<img height="90" width="130" alt="리뷰가 증명하는 캐시미어 싱글 롱 코트" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1209/6dh0thdfx6j.jpg">
+										<span class="mask"></span>
+										
+									<span class="list_tag">
+										
+											<span class="num4">4</span>
+											<span class="num2">2</span>
+											<span class="per">%</span>											
+										</span>
+									</span>
+									<span class="txt">리뷰가 증명하는 캐시미어 싱글 롱 코트</span>
+								</a><!--N=a:nss.04img,i:121870-->
+								<span class="price">
+									<em>79,000</em>
+									<span class="won">원</span>
+								</span>
+							</li>
+				<li>
+								<a class="link_a" href="https://shopping.naver.com/hotdeal/p/luckto/index.nhn?id=2280027&cat=14&sort=rcnt">
+									<span class="img_area">
+										<img height="90" width="130" alt="촉감이 부드럽고 따뜻한 라쿤 퍼 방한모자" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6aynxw3log8.jpg">
+										<span class="mask"></span>
+										
+									<span class="list_tag">
+										
+											<span class="num3">3</span>
+											<span class="num0">0</span>
+											<span class="per">%</span>											
+										</span>
+									</span>
+									<span class="txt">촉감이 부드럽고 따뜻한 라쿤 퍼 방한모자</span>
+								</a><!--N=a:nss.04img,i:121870-->
+								<span class="price">
+									<em>21,000</em>
+									<span class="won">원</span>
+								</span>
+							</li>
+				</ul>
+						</div>
+					</div>
+				
+				</div><div class="grid-item">
+
+					<div class="section_cell" name="t121874" id="t121874"><!-- type 7 -->
+						<span class="mask"></span>
+						<div class="list_type item">
+							<div class="banner_item">
+								<img height="62" width="308" alt="백화점 디스플레이상품 그대로" src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/18/0502/dekdi1qauaf.jpg">
+								<span class="mask"></span>
+								<div class="banner_tit">
+									<span class="tag_bg">
+										<span class="mask"></span>
+										<em>백화점 디스플레이상품 그대로</em>
+									</span>
+								</div>
+							</div>
+							<ul>
+							
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/department/category?first=4737193937&menu=10000018&sort=POPULARITY">
+									<span class="img_area">
+										<img height="100" width="102" alt="세련된 벨티드 구스 다운" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpcmrmnb7h.jpg">
+									</span>
+									<span class="txt">세련된 벨티드 구스 다운</span>
+								</a><!--N=a:nss.07img,i:121874-->
+								<em>에고이스트</em>
+							</li>
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/department/category?first=4737363513&menu=10000029&sort=POPULARITY">
+									<span class="img_area">
+										<img height="100" width="102" alt="러블리한 코듀로이 원피스" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpcmx9ktm4.jpg">
+									</span>
+									<span class="txt">러블리한 코듀로이 원피스</span>
+								</a><!--N=a:nss.07img,i:121874-->
+								<em>107스타일</em>
+							</li>
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/department/category?first=4708365001&menu=10000086&sort=POPULARITY">
+									<span class="img_area">
+										<img height="100" width="102" alt="고급스러운 마몽 체인백" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpcmyso674.jpg">
+									</span>
+									<span class="txt">고급스러운 마몽 체인백</span>
+								</a><!--N=a:nss.07img,i:121874-->
+								<em>구찌</em>
+							</li>
+					</ul>
+						</div>
+					</div>
+
+				</div><div class="grid-item">
+					<div class="section_cell" name="t121867" id="t121867"><!-- type 5 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/16/0511/ko56ztx58yo.png" alt="제값 주고 사면 아깝잖아!">
+								</em>
+								<strong>제값 주고 사면 아깝잖아!</strong>
+							</h3>
+						</div>
+						<div class="list_type hotdeal">
+							<ul>
+							
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/outlet/category?menu=10000290&first=4734389779&sort=POPULARITY">
+									<span class="img_area">
+										<img height="90" width="130" alt="보들보들하고 포근한 하이넥 니트 티셔츠" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpdatpydsb.jpg">
+										<span class="mask"></span>
+
+									<span class="list_tag">
+										
+											<span class="num6">6</span>
+											<span class="num9">9</span>
+											<span class="per">%</span>											
+										</span>
+									</span>
+									<span class="txt">보들보들하고 포근한 하이넥 니트 티셔츠</span>
+								</a><!--N=a:nss.05img,i:121867-->
+								<span class="mall">2만 원대</span>
+							</li>
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/outlet/category?menu=10000329&first=4726507845&sort=POPULARITY">
+									<span class="img_area">
+										<img height="90" width="130" alt="발끝까지 따뜻한 캐주얼 토끼털 숏 부츠" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpdaxk5u8x.jpg">
+										<span class="mask"></span>
+
+									<span class="list_tag">
+										
+											<span class="num7">7</span>
+											<span class="num2">2</span>
+											<span class="per">%</span>											
+										</span>
+									</span>
+									<span class="txt">발끝까지 따뜻한 캐주얼 토끼털 숏 부츠</span>
+								</a><!--N=a:nss.05img,i:121867-->
+								<span class="mall">4만 원대</span>
+							</li>
+					</ul>
+						</div>
+					</div>
+					
+				</div>
+<div class="grid-item">
+
+					<div class="section_cell" name="t121877" id="t121877"><!-- type 3 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/17/0811/vgzq6dh7fgp.png" alt="브랜드 신상 소식 및 다양한 콘텐츠">
+								</em>
+								<strong>브랜드 신상 소식 및 다양한 콘텐츠</strong>
+							</h3>
+						</div>
+						<div class="list_type basic">
+							<ul>						
+					<li>				
+								<a class="link_a" href="https://shopping.naver.com/style/fashionbrand/stores/100033913/news/2001114400">
+									<span class="img_area">
+										<img height="90" width="130" alt="보온성과 스타일을 겸비한 아우터 컬렉션" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6ays6pnhwf2.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>세인트제임스</em>
+									<span class="txt">보온성과 스타일을 겸비한 아우터 컬렉션</span>
+								</a><!--N=a:nss.03img,i:121877-->
+							</li>
+					<li>				
+								<a class="link_a" href="https://shopping.naver.com/style/fashionbrand/stores/100484830/news/2001118585">
+									<span class="img_area">
+										<img height="90" width="130" alt="연말 모임에 나를 더 빛내주는 볼륨 팔찌" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6ays6tid97u.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>로이드 더 그레이스</em>
+									<span class="txt">연말 모임에 나를 더 빛내주는 볼륨 팔찌</span>
+								</a><!--N=a:nss.03img,i:121877-->
+							</li>
+					</ul>
+						</div>
+					</div>
+			
+				</div>
+			<div class="grid-item">
+					<a name="t121871" id="t121871"></a>
+					<!-- type 10 -->
+					<div class="section_cell store_soho"><!-- [D] 스토어의 경우 class="store_" 추가 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/15/0714/djbbycssj1y.png" alt="소호몰 추천 스토어">
+								</em>
+								<strong>소호몰 추천 스토어</strong>
+							</h3>
+						</div>
+						<div class="list_type store_list"><!-- [D] 이미지 + 텍스트 스타일은 class="store_list", 아이콘 스타일은 class="store_icon" -->
+							<ul>
+					<li>
+								<a class="link_a" href="http://citynwoman.com/" target="_blank">
+									<span class="img_area">
+										<img height="74" width="74" alt="언제나 예쁘게" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpf7s6dsea.jpg">
+										<span class="mask_img"></span>
+									</span>
+									<span class="store_name">언제나 예쁘게</span>
+									<span class="store_mall">도시 &#38; 여자</span>
+								</a><!--N=a:nss.10img,i:121871-->
+							</li>
+					<li>
+								<a class="link_a" href="http://www.shoemaru.com/" target="_blank">
+									<span class="img_area">
+										<img height="74" width="74" alt="내가 찾던 슈즈" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpf7y3w6if.jpg">
+										<span class="mask_img"></span>
+									</span>
+									<span class="store_name">내가 찾던 슈즈</span>
+									<span class="store_mall">슈마루</span>
+								</a><!--N=a:nss.10img,i:121871-->
+							</li>
+					<li>
+								<a class="link_a" href="http://monicaroom.com/" target="_blank">
+									<span class="img_area">
+										<img height="74" width="74" alt="세련된 스타일" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpf80bvg1j.jpg">
+										<span class="mask_img"></span>
+									</span>
+									<span class="store_name">세련된 스타일</span>
+									<span class="store_mall">모니카룸</span>
+								</a><!--N=a:nss.10img,i:121871-->
+							</li>
+					</ul>
+						</div>
+					</div>
+				
+				</div>
+<div class="grid-item">
+
+					<div class="section_cell" name="t121864" id="t121864"><!-- type 3 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/15/1203/2zloufm68s7.png" alt="뷰티윈도 인기 브랜드">
+								</em>
+								<strong>뷰티윈도 인기 브랜드</strong>
+							</h3>
+						</div>
+						<div class="list_type basic">
+							<ul>						
+					<li>				
+								<a class="link_a" href="https://shopping.naver.com/beauty/stores/1000009578?first=1001095018&sort=POPULARITY">
+									<span class="img_area">
+										<img height="90" width="130" alt="피부에 눈부신 마법을~ 갈락토미 에센스" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpf764pto7.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>마녀공장</em>
+									<span class="txt">피부에 눈부신 마법을~ 갈락토미 에센스</span>
+								</a><!--N=a:nss.03img,i:121864-->
+							</li>
+					<li>				
+								<a class="link_a" href="https://shopping.naver.com/beauty/stores/1000016817?first=4736082097&sort=POPULARITY">
+									<span class="img_area">
+										<img height="90" width="130" alt="메인 컬러만 모은 한정판 로맨틱 무스 틴트" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpf79saihf.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>릴리바이레드</em>
+									<span class="txt">메인 컬러만 모은 한정판 로맨틱 무스 틴트</span>
+								</a><!--N=a:nss.03img,i:121864-->
+							</li>
+					</ul>
+						</div>
+					</div>
+			
+				</div>
+			<div class="grid-item">
+
+					<div class="section_cell" name="t121868" id="t121868"><!-- type 3 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/15/0708/def5tuwd40l.png" alt="리빙 스토어 행사소식">
+								</em>
+								<strong>리빙 스토어 행사소식</strong>
+							</h3>
+						</div>
+						<div class="list_type basic">
+							<ul>						
+					<li>				
+								<a class="link_a" href="https://shopping.naver.com/living/homeliving/event/46227">
+									<span class="img_area">
+										<img height="90" width="130" alt="찜 많이 받은 홈&amp;#38;데코 인기 가구 아이템" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6ayu5l39sgq.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>집 꾸미기</em>
+									<span class="txt">찜 많이 받은 홈&#38;데코 인기 가구 아이템</span>
+								</a><!--N=a:nss.03img,i:121868-->
+							</li>
+					<li>				
+								<a class="link_a" href="https://shopping.naver.com/living/homeliving/event/46229">
+									<span class="img_area">
+										<img height="90" width="130" alt="똑! 소리 나는 주부 9단들의 비밀 살림템" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6ayu5ozfhay.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>BEST OF BEST</em>
+									<span class="txt">똑! 소리 나는 주부 9단들의 비밀 살림템</span>
+								</a><!--N=a:nss.03img,i:121868-->
+							</li>
+					</ul>
+						</div>
+					</div>
+			
+				</div>
+			<div class="grid-item">
+
+					<div class="section_cell" name="t121875" id="t121875"><!-- type 7 -->
+						<span class="mask"></span>
+						<div class="list_type item">
+							<div class="banner_item">
+								<img height="62" width="308" alt="스트리트에서 많이 본 디자이너 옷" src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/18/0424/d7obiei246g.jpg">
+								<span class="mask"></span>
+								<div class="banner_tit">
+									<span class="tag_bg">
+										<span class="mask"></span>
+										<em>스트리트에서 많이 본 디자이너 옷</em>
+									</span>
+								</div>
+							</div>
+							<ul>
+							
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/designer/stores/1000023583/product?first=4021517084&sort=POPULARITY">
+									<span class="img_area">
+										<img height="100" width="102" alt="스타일리시한 트렌치 점퍼" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6ayux3ana1a.jpg">
+									</span>
+									<span class="txt">스타일리시한 트렌치 점퍼</span>
+								</a><!--N=a:nss.07img,i:121875-->
+								<em>제인송</em>
+							</li>
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/designer/stores/100437972/product?first=4734083709&sort=POPULARITY">
+									<span class="img_area">
+										<img height="100" width="102" alt="멋스러운 벨벳 스커트" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6ayux798n91.jpg">
+									</span>
+									<span class="txt">멋스러운 벨벳 스커트</span>
+								</a><!--N=a:nss.07img,i:121875-->
+								<em>클루드클레어</em>
+							</li>
+					<li>
+								<a class="link_a" href="https://swindow.naver.com/designer/list/category?query=11010007&first=4740733171&sort=REL_DES">
+									<span class="img_area">
+										<img height="100" width="102" alt="쁘띠 밍크 퍼 리본 목도리" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6ayuxb5h667.jpg">
+									</span>
+									<span class="txt">쁘띠 밍크 퍼 리본 목도리</span>
+								</a><!--N=a:nss.07img,i:121875-->
+								<em>더제이에스</em>
+							</li>
+					</ul>
+						</div>
+					</div>
+
+				</div><div class="grid-item">
+
+					<div class="section_cell" name="t121865" id="t121865"><!-- type 3 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/18/0424/11iyg14n4r2w.png" alt="지금 뜨는 쇼핑 핫이슈">
+								</em>
+								<strong>지금 뜨는 쇼핑 핫이슈</strong>
+							</h3>
+						</div>
+						<div class="list_type basic">
+							<ul>						
+					<li>				
+								<a class="link_a" href="https://shopping.naver.com/plan2/p/detail.nhn?seq=382106">
+									<span class="img_area">
+										<img height="90" width="130" alt="감성 가득한 니트 하나로 올겨울 준비 끝" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bphrhsv0p0.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>와와샵</em>
+									<span class="txt">감성 가득한 니트 하나로 올겨울 준비 끝</span>
+								</a><!--N=a:nss.03img,i:121865-->
+							</li>
+					<li>				
+								<a class="link_a" href="https://shopping.naver.com/plan2/p/detail.nhn?seq=381844">
+									<span class="img_area">
+										<img height="90" width="130" alt="편안하고 따뜻한 겨울 슈즈 ~12.11.까지" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bphrltbrz3.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>역삼 힐</em>
+									<span class="txt">편안하고 따뜻한 겨울 슈즈 ~12.11.까지</span>
+								</a><!--N=a:nss.03img,i:121865-->
+							</li>
+					</ul>
+						</div>
+					</div>
+			
+				</div>
+			<div class="grid-item">
+				<div class="section_cell" name="t121863" id="t121863"><!-- type 8B -->
+					<div class="list_type event">
+						<ul>
+						<li class="piece"><!-- [D] 1조각 들어갈 경우 class="piece" 추가 -->
+					<a class="link_a" href="https://shopping.naver.com/fresh/directfarm/category?menu=10002105&first=4740176880&sort=REL_DES">
+								<span class="img_area">
+									<img width="103" height="120" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpibbitojr.jpg" alt="">
+									<span class="mask"></span>
+								</span>
+								<div class="tag_area">
+									<span class="tag_align">
+										<span class="tag_bg">
+											<span class="mask"></span>
+											<em>#홍매향</em>
+										</span>
+									</span>
+								</div>
+							</a><!--N=a:nss.08img,i:121863-->
+					<a class="link_a" href="https://shopping.naver.com/fresh/directfarm/category?menu=10002115&first=3911644967&sort=REL_DES">
+								<span class="img_area">
+									<img width="103" height="120" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpibf1bg7o.jpg" alt="">
+									<span class="mask"></span>
+								</span>
+								<div class="tag_area">
+									<span class="tag_align">
+										<span class="tag_bg">
+											<span class="mask"></span>
+											<em>#표고버섯</em>
+										</span>
+									</span>
+								</div>
+							</a><!--N=a:nss.08img,i:121863-->
+					</li>
+						<li>
+					<a class="link_a" href="https://shopping.naver.com/fresh/directfarm/category?menu=10002128&first=4733888742&sort=REL_DES">
+								<span class="img_area">
+									<img width="103" height="120" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpibgkbed8.jpg" alt="">
+									<span class="mask"></span>
+								</span>
+								<div class="tag_area">
+									<span class="tag_align">
+										<span class="tag_bg">
+											<span class="mask"></span>
+											<em>#새꼬막</em>
+										</span>
+									</span>
+								</div>
+							</a><!--N=a:nss.08img,i:121863-->
+					<a class="link_a" href="https://shopping.naver.com/fresh/localfood/category?menu=10002228&first=2507092240&sort=REL_DES">
+								<span class="img_area">
+									<img width="103" height="120" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpibi76xnd.jpg" alt="">
+									<span class="mask"></span>
+								</span>
+								<div class="tag_area">
+									<span class="tag_align">
+										<span class="tag_bg">
+											<span class="mask"></span>
+											<em>#안흥찐빵</em>
+										</span>
+									</span>
+								</div>
+							</a><!--N=a:nss.08img,i:121863-->
+					</li>
+						<li>
+					<a class="link_a" href="https://shopping.naver.com/fresh/localfood/category?menu=10002232&first=1001066770&sort=REL_DES">
+								<span class="img_area">
+									<img width="103" height="120" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpibjpl3bh.jpg" alt="">
+									<span class="mask"></span>
+								</span>
+								<div class="tag_area">
+									<span class="tag_align">
+										<span class="tag_bg">
+											<span class="mask"></span>
+											<em>#병천순대</em>
+										</span>
+									</span>
+								</div>
+							</a><!--N=a:nss.08img,i:121863-->
+					<a class="link_a" href="https://shopping.naver.com/fresh/directfarm/category?menu=10002140&first=1002062534&sort=REL_DES">
+								<span class="img_area">
+									<img width="103" height="120" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpibl8jp4v.jpg" alt="">
+									<span class="mask"></span>
+								</span>
+								<div class="tag_area">
+									<span class="tag_align">
+										<span class="tag_bg">
+											<span class="mask"></span>
+											<em>#검은콩가루</em>
+										</span>
+									</span>
+								</div>
+							</a><!--N=a:nss.08img,i:121863-->
+					</li>
+						</ul>
+					</div>
+				</div>
+
+				</div><div class="grid-item">
+
+					<div class="section_cell" name="t121878" id="t121878"><!-- type 3 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/18/0424/nmdo654rwsp.png" alt="엄마들에게 입소문 난 육아용품">
+								</em>
+								<strong>엄마들에게 입소문 난 육아용품</strong>
+							</h3>
+						</div>
+						<div class="list_type basic">
+							<ul>						
+					<li>				
+								<a class="link_a" href="https://swindow.naver.com/kids/list/category?query=11014001&first=4703859220&sort=REL_DES">
+									<span class="img_area">
+										<img height="90" width="130" alt="배기 핏이 멋스러운 코듀로이 유아동 팬츠" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpiwbdhzph.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>엄마의 센스가 돋보여</em>
+									<span class="txt">배기 핏이 멋스러운 코듀로이 유아동 팬츠</span>
+								</a><!--N=a:nss.03img,i:121878-->
+							</li>
+					<li>				
+								<a class="link_a" href="https://swindow.naver.com/kids/list/category?query=11014004&first=4737200643&sort=REL_DES">
+									<span class="img_area">
+										<img height="90" width="130" alt="크리스마스 선물로 좋은 주방 놀이 세트" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpiwf8c3sm.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>미리 준비해요</em>
+									<span class="txt">크리스마스 선물로 좋은 주방 놀이 세트</span>
+								</a><!--N=a:nss.03img,i:121878-->
+							</li>
+					</ul>
+						</div>
+					</div>
+			
+				</div>
+			<div class="grid-item">
+
+					<div class="section_cell" name="t121869" id="t121869"><!-- type 3 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/17/0922/wgmcax4qqlh.png" alt="반려동물을 위한 애정템">
+								</em>
+								<strong>반려동물을 위한 애정템</strong>
+							</h3>
+						</div>
+						<div class="list_type basic">
+							<ul>						
+					<li>				
+								<a class="link_a" href="https://shopping.naver.com/pet/stores/100080145/news/2001116114?first=3932120448">
+									<span class="img_area">
+										<img height="90" width="130" alt="펫션의 완성은 얼굴, 얼굴 천재 막둥이룩" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpji6ozeuq.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>개셔니스타</em>
+									<span class="txt">펫션의 완성은 얼굴, 얼굴 천재 막둥이룩</span>
+								</a><!--N=a:nss.03img,i:121869-->
+							</li>
+					<li>				
+								<a class="link_a" href="https://swindow.naver.com/pet/specialEvent/detail/46129">
+									<span class="img_area">
+										<img height="90" width="130" alt="주인도 댕댕이도 편한 슬링백 이동 가방" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpjiaavk8x.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>어디라도 갈 수 있어!</em>
+									<span class="txt">주인도 댕댕이도 편한 슬링백 이동 가방</span>
+								</a><!--N=a:nss.03img,i:121869-->
+							</li>
+					</ul>
+						</div>
+					</div>
+			
+				</div>
+			<div class="grid-item">
+				<div class="section_cell" name="t121879" id="t121879">
+					<div class="list_type event">
+						<ul>
+						
+					<li class="piece2"><!-- [D] 2조각 들어갈 경우 class="piece2" 추가 -->	
+							<a class="link_a" href="https://shopping.naver.com/style/style/event/45620">									
+								<span class="img_area">
+									<img width="206" height="120" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpkv50ceeu.jpg" alt="링귀걸이 이미지">
+									<span class="mask"></span>
+								</span>
+								<div class="tag_area">
+									<span class="tag_align">
+										<span class="tag_bg">
+											<span class="mask"></span>
+											<em>#링귀걸이</em>
+										</span>
+									</span>
+								</div>
+							</a><!--N=a:nss.08img,i:121879-->
+					<a class="link_a" href="https://shopping.naver.com/style/style/event/45618">
+								<span class="img_area">
+									<img width="103" height="120" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpkv8o191k.jpg" alt="니트카디건 이미지">
+									<span class="mask"></span>
+								</span>
+								<div class="tag_area">
+									<span class="tag_align">
+										<span class="tag_bg">
+											<span class="mask"></span>
+											<em>#니트카디건</em>
+										</span>
+									</span>
+								</div>
+							</a><!--N=a:nss.08img,i:121879-->
+					<a class="link_a" href="https://shopping.naver.com/style/style/event/45621">
+								<span class="img_area">
+									<img width="103" height="120" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpkvab26ug.jpg" alt="첼시부츠 이미지">
+									<span class="mask"></span>
+								</span>
+								<div class="tag_area">
+									<span class="tag_align">
+										<span class="tag_bg">
+											<span class="mask"></span>
+											<em>#첼시부츠</em>
+										</span>
+									</span>
+								</div>
+							</a><!--N=a:nss.08img,i:121879-->
+					</li>
+						<li class="piece piece_long"><!-- [D] 1조각 들어갈 경우 class="piece" 추가,  긴이미지의 경우 class="piece_long" 추가 -->
+						
+					<a class="link_a" href="https://shopping.naver.com/style/style/event/45623">
+								<span class="img_area">
+									<img width="103" height="240" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpkvbwz4ka.jpg" alt="원피스 이미지">
+									<span class="mask"></span>
+								</span>
+								<div class="tag_area">
+									<span class="tag_align">
+										<span class="tag_bg">
+											<span class="mask"></span>
+											<em>#원피스</em>
+										</span>
+									</span>
+								</div>
+							</a><!--N=a:nss.08img,i:121879-->
+				</li>
+						</ul>
+					</div>
+				</div>
+			</div><div class="grid-item">
+					<div class="section_cell" name="t121866" id="t121866"><!-- type 5 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/17/0731/6wkurxqv0mm.png" alt="볼수록 탐나는 아이템">
+								</em>
+								<strong>볼수록 탐나는 아이템</strong>
+							</h3>
+						</div>
+						<div class="list_type hotdeal">
+							<ul>
+							
+					<li>
+								<a class="link_a" href="https://swindow.naver.com/play/play/list/category?query=11013004&query=11013004001&first=1001912184&sort=REL_DES">
+									<span class="img_area">
+										<img height="90" width="130" alt="밤에 빛을 발하는 UFO 헤드리스 비행 드론" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpkv6l05gs.jpg">
+										<span class="mask"></span>
+
+									</span>
+									<span class="txt">밤에 빛을 발하는 UFO 헤드리스 비행 드론</span>
+								</a><!--N=a:nss.05img,i:121866-->
+								<span class="mall">3만 원대</span>
+							</li>
+					<li>
+								<a class="link_a" href="https://swindow.naver.com/play/play/list/category?query=11013003&query=11013003001&first=4724890866&sort=REL_DES">
+									<span class="img_area">
+										<img height="90" width="130" alt="추운 겨울 떨지 말고 차량용 열선 시트" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bpkva6v4vi.jpg">
+										<span class="mask"></span>
+
+									</span>
+									<span class="txt">추운 겨울 떨지 말고 차량용 열선 시트</span>
+								</a><!--N=a:nss.05img,i:121866-->
+								<span class="mall">2만 원대</span>
+							</li>
+					</ul>
+						</div>
+					</div>
+					
+				</div>
+<div class="grid-item">
+
+					<div class="section_cell" name="t121862" id="t121862"><!-- type 3 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/17/0811/vgzsbz9x4xy.png" alt="요즘 뜨는 해외 레어템">
+								</em>
+								<strong>요즘 뜨는 해외 레어템</strong>
+							</h3>
+						</div>
+						<div class="list_type basic">
+							<ul>						
+					<li>				
+								<a class="link_a" href="https://shopping.naver.com/foreign/category/10001270?first=4752695101&sort=REL_DES">
+									<span class="img_area">
+										<img height="90" width="130" alt="집안의 품격을 높여 줄 유니크한 전기 포트" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1209/6e7oy0l47yv.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>스메그</em>
+									<span class="txt">집안의 품격을 높여 줄 유니크한 전기 포트</span>
+								</a><!--N=a:nss.03img,i:121862-->
+							</li>
+					<li>				
+								<a class="link_a" href="https://shopping.naver.com/foreign/category/10001271?first=4746759083&sort=REL_DES">
+									<span class="img_area">
+										<img height="90" width="130" alt="시크한 메탈 스터드 체인 스트랩 숄더백" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6az05atvg0w.jpg">
+										<span class="mask"></span>
+									</span>
+									<em>프라다</em>
+									<span class="txt">시크한 메탈 스터드 체인 스트랩 숄더백</span>
+								</a><!--N=a:nss.03img,i:121862-->
+							</li>
+					</ul>
+						</div>
+					</div>
+			
+				</div>
+			<div class="grid-item">	
+					<div class="section_cell" name="t121880" id="t121880"><!-- type 9 -->
+						<span class="mask"></span>
+						<div class="tit_area">
+							<h3>
+								<em>
+								<img src="https://ssl.pstatic.net/static.checkout/cnsv/iu/home/18/0424/d7o96w1havs.png" alt="풍요로운 삶을 위한 아트">
+								</em>
+								<strong>풍요로운 삶을 위한 아트</strong>
+							</h3>
+						</div>
+						<div class="list_type mdpick">
+							<ul>
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/art/category?menu=10000867&first=4745032127&sort=POPULARITY">
+									<img height="74" width="88" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1209/6dh34t3c1t6.jpg" alt="풍요로운 삶을 위한 아트 이미지">
+									<span class="mask"></span>
+								</a><!--N=a:nss.09img,i:121880-->
+							</li>
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/art/category?menu=10000876&first=4385972518&sort=POPULARITY">
+									<img height="74" width="88" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6az0w5w8fr9.jpg" alt="풍요로운 삶을 위한 아트 이미지">
+									<span class="mask"></span>
+								</a><!--N=a:nss.09img,i:121880-->
+							</li>
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/art/category?menu=10000884&first=2229776783&sort=POPULARITY">
+									<img height="74" width="88" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6az0w8e71gq.jpg" alt="풍요로운 삶을 위한 아트 이미지">
+									<span class="mask"></span>
+								</a><!--N=a:nss.09img,i:121880-->
+							</li>
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/art/category?menu=10000893&first=4367850826&sort=POPULARITY">
+									<img height="74" width="88" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6az0wav00iq.jpg" alt="풍요로운 삶을 위한 아트 이미지">
+									<span class="mask"></span>
+								</a><!--N=a:nss.09img,i:121880-->
+							</li>
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/art/category?menu=10000899&first=3585287700&sort=POPULARITY">
+									<img height="74" width="88" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6az0wd9eb7s.jpg" alt="풍요로운 삶을 위한 아트 이미지">
+									<span class="mask"></span>
+								</a><!--N=a:nss.09img,i:121880-->
+							</li>
+					<li>
+								<a class="link_a" href="https://shopping.naver.com/art/category?menu=10000908&first=4705905240&sort=POPULARITY">
+									<img height="74" width="88" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6az0wftn0wu.jpg" alt="풍요로운 삶을 위한 아트 이미지">
+									<span class="mask"></span>
+								</a><!--N=a:nss.09img,i:121880-->
+							</li>
+					</ul>
+						</div>
+					</div>
+
+				</div>
+<div class="grid-item">
+
+					<div class="section_cell" name="t121861" id="t121861"><!-- type 12 -->
+						<div class="list_type banner">
+							<div class="banner_rolling">
+								<ul>
+					<li>
+									<a id="homeTpl12Link121861" class="link_a" href="https://m.shopping.naver.com/plan/details/68201">
+										<img id="homeTpl12Img121861" height="240" width="308" src="https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1104/5kq5icc0fzw.jpg" alt="온라인 공동 브랜드관 다채몰 대구 지역의 제품을 만나보세요!">
+										<span class="mask"></span>
+									</a><!--N=a:nss.12txt,i:121861-->
+								</li>
+					</ul>
+							</div>
+							
+					<a class="btn_pre _click[homeBase.goTpl12Prev('121861');return false;]" href="#">이전 배너 보기</a>
+							<a class="btn_next _click[homeBase.goTpl12Next('121861');return false;]" href="#">다음 배너 보기</a>
+							
+						
+							<div class="banner_page">
+								<a id="homeTpl12Page121861_1" class=" _click[homeBase.goTpl12Page('121861', '1');return false;]" href="#">1번 배너보기</a>
+								<a id="homeTpl12Page121861_2" class=" _click[homeBase.goTpl12Page('121861', '2');return false;]" href="#">2번 배너보기</a>
+								<a id="homeTpl12Page121861_3" class=" _click[homeBase.goTpl12Page('121861', '3');return false;]" href="#">3번 배너보기</a>
+								<a id="homeTpl12Page121861_4" class="on _click[homeBase.goTpl12Page('121861', '4');return false;]" href="#">4번 배너보기</a>
+								<a id="homeTpl12Page121861_5" class=" _click[homeBase.goTpl12Page('121861', '5');return false;]" href="#">5번 배너보기</a>
+								<a id="homeTpl12Page121861_6" class=" _click[homeBase.goTpl12Page('121861', '6');return false;]" href="#">6번 배너보기</a>
+								<a id="homeTpl12Page121861_7" class=" _click[homeBase.goTpl12Page('121861', '7');return false;]" href="#">7번 배너보기</a>
+								<a id="homeTpl12Page121861_8" class=" _click[homeBase.goTpl12Page('121861', '8');return false;]" href="#">8번 배너보기</a>
+								</div>							
+					</div>
+					</div>
+
+				</div></div>
+				<!-- /grid -->
+		
+			 </div>
+
+		<!-- 주요 쇼핑몰 -->
+			<div class="mall_area">
+				<h3><em>주요 쇼핑몰</em></h3>
+				<div class="mall_list">				
+					<ul id="mallListPage1">
+					
+			<li><a href="http://www.gmarket.co.kr/index.asp?jaehuid=200003874" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_298/cnsv01_1529487185533DeueN_GIF/2018060125dd44-b5b3-4e2f-a0cc-8bf57455bbe8.gif" height="15" alt="G마켓"></a></li>
+			<li><a href="http://banner.auction.co.kr/bn_redirect.asp?ID=BN00076165" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_245/cnsv01_1529487169172AhGj9_GIF/2018062b30d8ff-bbfa-49d5-8a91-c9411dfd57f3.gif" height="15" alt="옥션"></a></li>
+			<li><a href="http://www.11st.co.kr/connect/Gateway.tmall?method=Xsite&tid=1000000550 " target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_175/cnsv01_1529487153352U9MJM_GIF/20180628871b72-791b-479b-909a-795bf6b15e84.gif" height="15" alt="11번가"></a></li>
+			<li><a href="http://www.lotteimall.com/coop/affilGate.lotte?chl_no=141170&chl_dtl_no=2540912" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_122/cnsv01_1529487141618LBcrF_GIF/2018061e351362-9246-45bf-8e88-664e3e1ddd68.gif" height="15" alt="롯데아이몰"></a></li>
+			<li><a href="http://with.gsshop.com/jsp/jseis_withLGeshop.jsp?media=mx" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_28/cnsv01_1529487129448Yn0I7_GIF/201806cb6eb0ab-e358-4baa-8030-85e7b50a8661.gif" height="15" alt="GSSHOP"></a></li>
+			<li><a href="http://www.lotte.com/coop/affilGate.lotte?chl_no=152126&chl_dtl_no=2937637&returnUrl=/main/viewMain.lotte?dpml_no=1" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_36/cnsv01_15294871165120TgCr_GIF/201806a0c13b3f-c3d7-459a-ae47-70d3be9018cd.gif" height="15" alt="롯데닷컴"></a></li>
+			<li><a href="http://www.hyundaihmall.com/front/shNetworkShop.do?NetworkShop=Html&ReferCode=201&Url=http://www.hmall.com/Home.html&NtSite=Naver&NtBan=shopping_Logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_44/cnsv01_1529487103177lss4f_GIF/201806cb3f1f7a-f23c-4861-a228-94e1311c1c14.gif" height="15" alt="현대Hmall"></a></li>
+			<li><a href="http://display.cjmall.com/p/homeTab/main?infl_cd=I0694" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_88/cnsv01_15294870867838IX6c_GIF/201806a8a5380c-8b9f-4f80-bcc7-96639f81e622.gif" height="15" alt="CJmall"></a></li>
+			<li><a href="http://www.interpark.com/gate/ippgw.jsp?biz_cd=P00385&url=http://www.interpark.com" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_49/cnsv01_1529487074327L9VVQ_GIF/201806dec7da03-fd30-467b-9547-1f572649dbb3.gif" height="15" alt="인터파크"></a></li>
+			<li><a href="http://shinsegaemall.ssg.com/main.ssg?ckwhere=snaver_st" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_289/cnsv01_1529487060946TWNpC_GIF/201806c11ce067-6ddf-4d4c-8bae-bb1771740d81.gif" height="15" alt="신세계몰"></a></li>
+			<li><a href="http://www.ellotte.com/coop/affilGate.lotte?chl_no=153154&chl_dtl_no=2942593&returnUrl=/main/viewELMain.lotte?dpml_no=1" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_9/cnsv01_1529487045488dleYy_GIF/201806fe3e8cf9-0c1e-4673-9425-d71d974c76f3.gif" height="15" alt="엘롯데"></a></li>
+			<li><a href="http://www.akmall.com/assc/assc_conv.jsp?assc_comp_id=18113&url=http://www.akmall.com/" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_218/cnsv01_1529487033525K1cl5_GIF/2018068702053b-54d2-4270-b782-baa835b644c5.gif" height="15" alt="AK몰"></a></li>
+			<li><a href="http://www.hnsmall.com/channel/channel.do?channel_code=20022" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180704_257/cnsv01_1530686472080R5ed0_GIF/20180717d3bb23-2fc2-4bfd-b24b-ed71fb9b94b3.gif" height="15" alt="홈앤쇼핑"></a></li>
+			<li><a href="http://www.nsmall.com/jsp/site/gate.jsp?co_cd=130&target=/nsmallddd" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_247/cnsv01_1529486974563rBe92_GIF/2018069f8152b9-82f3-468b-b170-eac618c2b406.gif" height="15" alt="NS홈쇼핑"></a></li>
+			<li><a href="http://www.ssg.com/main.ssg?ckwhere=ssgnaver_shopt" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_195/cnsv01_1529486955074m2P4w_GIF/201806b4342c42-ce87-47ad-ae2e-fe9484d61ca5.gif" height="15" alt="SSG닷컴"></a></li>
+			<li><a href="https://front.wemakeprice.com/affiliate/bridge?channelId=1000020&affiliateExtraNo=wmp_logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_29/cnsv01_1529486939232UFFeC_GIF/201806d9d298f3-c945-4794-a726-13a87dd86d75.gif" height="15" alt="위메프"></a></li>
+			</ul>
+					<ul id="mallListPage2" style="display:none;">					
+				<li><a href="http://www.tmon.co.kr/entry/?jp=80019&ln=155789" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_198/cnsv01_1529486925310hHGl7_GIF/2018064f207dd5-284c-4308-96cb-db3cfcea07bc.gif" height="15" alt="티몬"></a></li>
+			<li><a href="http://emart.ssg.com/main.ssg?ckwhere=enaver_shopt" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_237/cnsv01_1529486911409WY7Eu_GIF/20180679cb54ae-0267-42f7-9dd1-5a93bf98a899.gif" height="15" alt="이마트몰"></a></li>
+			<li><a href="http://www.LFmall.co.kr/display.do?cmd=main&af=2000" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_21/cnsv01_1529486853461PCJ8v_GIF/2018062c2d3225-2e2f-4cc3-9f3c-98ff01041561.gif" height="15" alt="LFmall"></a></li>
+			<li><a href="http://www.halfclub.com/joins/naver.asp?/" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_290/cnsv01_15294868383137Vu5C_GIF/2018063b269ba3-5feb-4969-913d-f65e65588991.gif" height="15" alt="하프클럽"></a></li>
+			<li><a href="http://www.homeplus.co.kr/app.exhibition.main.PartnerMall.ghs?extends_id=naver&service_cd=56020&nextUrl=%2Fapp.exhibition.main.Main.ghs%3Fpaper_no%3Dcategory%26extends_id%3Dnaver%26service_cd%3D56020%26utm_source%3Dnaver%26utm_medium%3Dshopping%26utm_campaign%3Dprice_home" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_16/cnsv01_1529485947973QvHx6_GIF/2018067ae5f808-5792-4771-a878-5197e37dc234.gif" height="15" alt="홈플러스"></a></li>
+			<li><a href="http://www.lottemart.com/lim/handler/Index?AFFILIATE_ID=00150003&CHANNEL_CD=00009" target="_blank"><img src="https://phinf.pstatic.net/checkout/20181011_230/cnsv01_15392432982968EhnW_GIF/201810cde38db0-e4dc-476f-8f14-3dc288bcbcc8.gif" height="15" alt="롯데마트"></a></li>
+			<li><a href="http://www.1300k.com/index.html?from=nvrbnr" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_119/cnsv01_1529485916322d2H5R_GIF/2018063a24ada2-d213-44f1-8806-5886d361b874.gif" height="15" alt="1300K"></a></li>
+			<li><a href="http://store.musinsa.com/app/?source=NVSH_LOGO" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_86/cnsv01_1529485903466LM6fp_GIF/2018063ce7f5d5-aba9-4e3b-ad3c-0722e9a3bdc2.gif" height="15" alt="무신사"></a></li>
+			<li><a href="http://mall.hanssem.com/interface/naver.do?PARTNERID=hanssem_partner_17&URL=http://mall.hanssem.com" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_283/cnsv01_1529485889861He8ff_GIF/2018065790b106-1dde-445d-8164-d363b4f34748.gif" height="15" alt="한샘몰"></a></li>
+			<li><a href="http://www.e-himart.co.kr/index.jsp?fromShop=naver_mn20" target="_blank"><img src="https://phinf.pstatic.net/checkout/20190423_90/1556007878738IWlfB_GIF/201904217412b9-2124-455f-acf9-945de3c8679d.gif" height="15" alt="하이마트쇼핑몰"></a></li>
+			<li><a href="http://www.wizwid.com/CSW/handler/wizwid/kr/MainView-Start?adfrom=naver_shopchu" target="_blank"><img src="https://phinf.pstatic.net/checkout/20190403_100/1554272548256RNB7b_GIF/2019041db7b191-35e1-452e-bbe4-29ab3e3c4e17.gif" height="15" alt="위즈위드"></a></li>
+			<li><a href="http://www.fashionplus.co.kr/mall/default.asp?affiliate=naver_logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20190521_171/1558420650857o84k2_JPEG/2019055a94257f-eb26-4cb3-807c-0d69fd0c2cf6.jpg" height="15" alt="패션플러스"></a></li>
+			<li><a href="http://www.galleria.co.kr/common.do?method=join&channel_id=1004&link_id=0001" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_234/cnsv01_1529485829842D4hNv_GIF/201806cef450fd-c9bd-400e-b3df-e643919526dc.gif" height="15" alt="갤러리아몰"></a></li>
+			<li><a href="http://www.istyle24.com/?cid=naver" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_73/cnsv01_15294858173191a1Eo_GIF/201806dc042794-d277-443a-b809-b2d242b0dbff.gif" height="15" alt="아이스타일24"></a></li>
+			<li><a href="http://www.stylelq.com/intro.do?CHN_CODE=11" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_137/cnsv01_1529485804794xyg3H_GIF/201806bfe7f977-f3de-48ad-8764-88b45ef1c77b.gif" height="15" alt="루이까또즈몰"></a></li>
+			<li><a href="http://www.boribori.co.kr/joins/naver.asp?/" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_234/cnsv01_1529485792870RvI90_GIF/2018061e495849-ed0c-4e7d-a74f-3878cd9b0e2b.gif" height="15" alt="보리보리"></a></li>
+			</ul>
+					<ul id="mallListPage3" style="display:none;">					
+				<li><a href="http://www.hottracks.co.kr/ht/welcomeMain?LNK=C1264 " target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_31/cnsv01_15294857730499N3WN_GIF/201806b14ef72d-c809-4045-aafe-90fcae5fe454.gif" height="15" alt="교보핫트랙스"></a></li>
+			<li><a href="http://www.0to7.com/ccs/common/gateway?channelId=0001" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_28/cnsv01_1529485759988GywdU_GIF/201806836ee5d1-f7d0-40f7-9c37-36968ca928c2.gif" height="15" alt="제로투세븐닷컴"></a></li>
+			<li><a href="http://www.wconcept.co.kr/main.asp?adfrom=naver_logo_text" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_81/cnsv01_1529485745697KNFip_GIF/20180642d1f171-b657-4a0f-af23-b07d4dd8ce73.gif" height="15" alt="더블유컨셉"></a></li>
+			<li><a href="http://www.etland.co.kr/pc/main/index.do?chlCode=A066" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_249/cnsv01_1529485732205SRW0S_GIF/2018069c718263-0e6e-482b-b221-ba0b964119d7.gif" height="15" alt="전자랜드"></a></li>
+			<li><a href="http://www.mustit.co.kr/naver_session.php?PARTNERID=mustit_partner_78&URL=http://mustit.co.kr" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_111/cnsv01_1529485714028ie5gS_GIF/201806ecb6d930-7126-4566-86de-b340e97eaa3b.gif" height="15" alt="머스트잇"></a></li>
+			<li><a href="http://www.dongwonmall.com/index.do?emailCourse=n2code001" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_60/cnsv01_1529485685370PXIse_GIF/2018063136cad4-f800-4794-98c1-5f6fddd372ba.gif" height="15" alt="동원몰"></a></li>
+			<li><a href="https://www.cjthemarket.com/pc/main?code=na1" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_85/cnsv01_1529485639945eu6Gx_GIF/2018067a103302-165f-4cad-87c3-bfbcc8a34757.gif" height="15" alt="CJ더마켓"></a></li>
+			<li><a href="http://ticket.yes24.com/Pages/Main.aspx?site_pid=cp067udH2o" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_291/cnsv01_1529485625686j7zcw_GIF/2018067d273d51-44b3-4a49-9f74-0881ff547a46.gif" height="15" alt="예스24공연"></a></li>
+			<li><a href="http://kor.lottedfs.com/kr?inChanelCd=100019" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_195/cnsv01_1529485613284TGMI4_GIF/2018065b620864-25f8-44d9-a39d-a32527d8f2d5.gif" height="15" alt="롯데면세점"></a></li>
+			<li><a href="http://www.dwdfs.com/?Domain=Naver1" target="_blank"><img src="https://phinf.pstatic.net/checkout/20181010_200/cnsv01_1539162624505vDImM_GIF/201810a1cf8488-f05c-426f-b943-1fec51ac8a8d.gif" height="15" alt="동화면세점"></a></li>
+			<li><a href="http://www.shilladfs.com/estore/kr/ko/?uiel=Desktop&affl_id=030423" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_80/cnsv01_1529485546857lRp3O_GIF/20180658dd3d92-5eac-4867-b443-3eadd136b46a.gif" height="15" alt="신라면세점"></a></li>
+			<li><a href="http://www.10x10.co.kr/?rdsite=nvshop_logo " target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_177/cnsv01_1529485531426Mur29_GIF/201806413ff19e-9e46-4ef3-bd92-1beabe4ac640.gif" height="15" alt="텐바이텐"></a></li>
+			<li><a href="http://www.nhmarket.kr/AdvertisingSite/AdvertisingSite.asp?sskey=Naver&gbkey=301" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_68/cnsv01_1529485479437bCyTf_GIF/20180679d10daf-e9e9-440f-9e38-860628e736cc.gif" height="15" alt="NH마켓"></a></li>
+			<li><a href="http://www.lottesuper.co.kr?CHL_NO=384187" target="_blank"><img src="https://phinf.pstatic.net/checkout/20181016_278/cnsv01_1539665742106EnLT1_GIF/2018102d823efb-b541-41b7-a7e7-8e58f29cb692.gif" height="15" alt="롯데슈퍼"></a></li>
+			<li><a href="http://www.29cm.co.kr/?naver_code=naver_logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_260/cnsv01_1529485447172JdwBS_GIF/2018064c227ad5-ffa6-4e80-a98c-3f2c0e93581d.gif" height="15" alt="29CM"></a></li>
+			<li><a href="http://www.babosarang.co.kr?pip=naver_logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_197/cnsv01_1529485433138PQjKo_GIF/20180618f915d7-b2a1-477a-bbe6-83555fcb6080.gif" height="15" alt="바보사랑"></a></li>
+			</ul>
+					<ul id="mallListPage4" style="display:none;">					
+				<li><a href="http://shop.descentekorea.co.kr/index.do?af=NP31" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_176/cnsv01_15294854181822xeh6_GIF/20180644513d3d-8870-48eb-8ac0-afccade21c90.gif" height="15" alt="데상트코리아"></a></li>
+			<li><a href="http://www.g9.co.kr/?jaehuid=200006438" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_69/cnsv01_1529485401520vt32N_GIF/20180693234a45-ee36-48cb-b8b0-9c41ca43a068.gif" height="15" alt="G9"></a></li>
+			<li><a href="http://www.okoutdoor.com/?PARTNERID=logoimg" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_284/cnsv01_15294853859057N3Mj_GIF/2018066eb3ec97-aaee-4abc-8f5f-8b9ca73f7015.gif" height="15" alt="오케이몰"></a></li>
+			<li><a href="http://www.ticketlink.co.kr?inflowCode=naverShop_logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_120/cnsv01_1529485373024Dsuix_GIF/20180674551880-2765-44f0-b028-e413d2e002d4.gif" height="15" alt="티켓링크"></a></li>
+			<li><a href="http://www.ssfshop.com/public/inflow/partnerGate/serviceId/313?nextUrl=/main" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_76/cnsv01_1529485351655rtp6e_GIF/20180671b0d2e9-018d-4cd9-bd9d-e60fa1f65da8.gif" height="15" alt="SSF샵"></a></li>
+			<li><a href="http://www.thehyundai.com/front/shNetworkShop.thd?NetworkShop=Html&ReferCode=431&utm_source=naver&utm_medium=cps&utm_term=naver_shoppinglogo&utm_campaign=potal_logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_248/cnsv01_1529463359965WVXxD_GIF/2018066a1aa89d-15f6-49e3-b716-ec9bf2b04189.gif" height="15" alt="더현대닷컴"></a></li>
+			<li><a href="http://www.elandmall.com/gate/gate.action?chnl_no=NW1&chnl_dtl_no=1609168308" target="_blank"><img src="https://phinf.pstatic.net/checkout/20190321_237/1553131273422BJYvE_GIF/201903b24c9ae8-a416-41c9-9198-8fc7d9f3c512.gif" height="15" alt="이랜드몰"></a></li>
+			<li><a href="http://freeship.co.kr?freeship_ep=naver_logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_83/cnsv01_1529463299355880pG_GIF/20180636046640-9165-4863-b359-56af4988d54e.gif" height="15" alt="프리쉽"></a></li>
+			<li><a href="http://www.funshop.co.kr/?pid=nv_logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_267/cnsv01_152946326317790LfV_GIF/201806021ba062-3dc9-4321-b0ec-b06e90b4269d.gif" height="15" alt="펀샵"></a></li>
+			<li><a href="http://daisomall.co.kr/?ad_code=naver_logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_131/cnsv01_1529463248948Masqv_GIF/20180660eb03a9-d8a0-4fbb-bc3a-c6866229f905.gif" height="15" alt="다이소몰"></a></li>
+			<li><a href="http://www.ssgdfm.com/shop/main?utm_source=naver&utm_medium=partnership&utm_campaign=navershopping&utm_content=logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_148/cnsv01_1529463223200tHPJo_GIF/2018061c4d5286-de4e-4ace-997f-960e73fc0ff8.gif" height="15" alt="신세계인터넷면세점"></a></li>
+			<li><a href="http://www.mariooutlet.com?adfrom=naver_shoplogo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20190408_142/15547006816330OpJj_GIF/2019042eb55f99-6677-4c9a-b2b6-e62f4b8bbc6e.gif" height="15" alt="마리오아울렛닷컴"></a></li>
+			<li><a href="http://ticket.melon.com/main/index.htm?coop=114&coop_funnel=FN0002" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_216/cnsv01_1529463193353WC79d_GIF/20180685c6044d-2096-4c97-be9c-c765834f527c.gif" height="15" alt="멜론티켓"></a></li>
+			<li><a href="http://ogage.co.kr/Partner/o2_naver_bi?http://www.ogage.co.kr  " target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_185/cnsv01_1529463179187pPEfy_GIF/20180683d794e0-3dae-4aa5-81ed-42015230d520.gif" height="15" alt="오가게"></a></li>
+			<li><a href="http://www.sivillage.com?partnerCd=0204442&partnerNm=naver_shopping_logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_44/cnsv01_1529463163015wJeOb_GIF/2018068c1f4ab4-3ab5-483f-bc97-3d708db0cff2.gif" height="15" alt="SI빌리지"></a></li>
+			<li><a href="https://www.gongyoungshop.kr/gate/selectAliance.do?alcLnkCd=naverlg&tgUrl=/main.do" target="_blank"><img src="https://phinf.pstatic.net/checkout/20181101_29/cnsv01_1541062665350Y0S4J_GIF/201811afd00ddc-a9f0-4007-b182-0ceacdf5d6f3.gif" height="15" alt="공영쇼핑"></a></li>
+			</ul>
+					<ul id="mallListPage5" style="display:none;">					
+				<li><a href="https://www.kolonmall.com/?src=image&kw=01E9B1&PARTNERID=NAVEREP03&utm_source=naver_ep&utm_medium=display&utm_campaign=NT&utm_term=KM&utm_content=naver_ep_logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_18/cnsv01_1529463080030SXXBQ_GIF/20180641db6cca-aafb-486e-b591-0a6c1e0359c6.gif" height="15" alt="코오롱몰"></a></li>
+			<li><a href="http://www.unit808.com?ad_code=naver_logo​" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_32/cnsv01_1529463066072ygiI6_GIF/201806f2445566-182d-47ff-8046-135d2a3cd62b.gif" height="15" alt="유닛808"></a></li>
+			<li><a href="http://www.coupang.com/landingMulti.pang?sid=Naver_Shopping&src=1032111&spec=10305203&lptag=Naver_Shopping_logo&&forceBypass=Y&homeLanding=Y" target="_blank"><img src="https://phinf.pstatic.net/checkout/20180620_110/cnsv01_1529463094749hEk6G_GIF/2018064abaca95-b8ce-4480-9b73-fc271dbd319e.gif" height="15" alt="쿠팡"></a></li>
+			<li><a href="https://www.aladin.co.kr/home/welcome.aspx?partner=ns_logo" target="_blank"><img src="https://phinf.pstatic.net/checkout/20181204_97/cnsv01_1543914099158H9hTL_GIF/20181290191312-9c7d-4c11-94b4-4853684e1fa4.gif" height="15" alt="알라딘"></a></li>
+			<li><a href="https://best.aliexpress.com/src=naver&aff_short_key=QwOpZ4k&isdl=y&aff_platform=true" target="_blank"><img src="https://phinf.pstatic.net/checkout/20190718_207/1563444591790q65lg_PNG/201907885fcdac-d043-4034-bf01-f03dee974dcd.png" height="15" alt="aliexpress"></a></li>
+			<li><a href="https://www.farfetch.com/kr/shopping/men/items.aspx?clickref=1100l6sph6fM&utm_source=naver&utm_medium=cpc&utm_campaign=PHPPC&pid=performancehorizon_int&c=naver&clickid=1100l6sph6fM&af_siteid=1100l67392&af_sub_siteid=1011l274&af_cost_model=CPA&af_channel=Search&is_retargeting=true" target="_blank"><img src="https://phinf.pstatic.net/checkout/20190812_205/1565599628223mKt22_GIF/20190836b8ec3e-ca6b-43c1-ae19-32e3df90b60f.gif" height="15" alt="farfetch"></a></li>
+			<li><a href="https://www.qoo10.com/?jaehuid=2026407261" target="_blank"><img src="https://phinf.pstatic.net/checkout/20190903_234/1567473811852Ld2yn_GIF/201909a4439a08-9428-43ca-8747-acf1d557fef4.gif" height="15" alt="Qoo10"></a></li>
+			<li><a href="https://ople.com/naver.php?naverFg=oplecom" target="_blank"><img src="https://phinf.pstatic.net/checkout/20191004_257/1570182891946miQDO_JPEG/201910a5a87e47-3545-4bad-9a48-f205533318f0.jpg" height="15" alt="오플닷컴"></a></li>
+			<li><a href="https://kr.iherb.com?utm_source=naverPCS&rcode=AFK9112" target="_blank"><img src="https://phinf.pstatic.net/checkout/20190729_32/1564379891464Mxk8v_JPEG/2019077cbb8721-fa6a-451d-896b-7e9693a2fa94.jpg" height="15" alt="iherb"></a></li>
+			<li><a href="https://www.trenbe.com?n_t_param=trenbecps" target="_blank"><img src="https://phinf.pstatic.net/checkout/20191121_96/15743066132046jKeb_GIF/201911313b08fb-b3b6-44e7-bc02-05739db248ea.gif" height="15" alt="트렌비"></a></li>
+			<li><a href="https://www.hddfs.com/shop/dm/main.do?ptnrChlCd=00001806" target="_blank"><img src="https://phinf.pstatic.net/checkout/20190927_82/1569579126007agyE8_GIF/20190946aa6a5a-e079-4a10-8c73-675063188451.gif" height="15" alt="현대백화점인터넷면세점"></a></li>
+			<li><a href="http://www.skstoa.com/index?mediaCode=EP05" target="_blank"><img src="https://phinf.pstatic.net/checkout/20190918_82/1568789329716PVoUS_JPEG/20190906c81f84-da4c-4ad7-995f-1b5fa57abb37.jpg" height="15" alt="SK스토아"></a></li>
+			<li><a href="http://www.oliveyoung.co.kr/store/common/partner.do?chlNo=1&chlDtlNo=62&sndType=main&sndVal=" target="_blank"><img src="https://phinf.pstatic.net/checkout/20190917_96/1568700583573R1Fza_GIF/2019097a5be3be-41ba-4eb1-8a29-8008b481cd00.gif" height="15" alt="올리브영"></a></li>
+			</ul>
+				</div>
+				<div class="mall_page">
+					<span class="count"><em id="mallListPage">1</em>/5</span>
+					<a href="#" class="btn_pre _click[homeBase.mallListPrevPage();return false;]">이전 주요 쇼핑몰 보기</a>
+					<a href="#" class="btn_next _click[homeBase.mallListNextPage();return false;]">다음 주요 쇼핑몰 보기</a>
+				</div>
+			</div>
+			<!-- //주요 쇼핑몰 -->
+		<!-- 공지사항 -->
+			<div class="home_notice">
+				<h3><em>공지사항</em></h3>
+				<p class="notice_tit">
+					<a href="https://shopping.naver.com/notice/notice.nhn">
+						<span class="txt">[안내] 네이버 쇼핑 공지사항을 확인하세요.</span>
+						<em>　</em>
+					</a>
+				</p>
+				<a href="/notice/notice.nhn" class="btn_notice_more">전체보기<span></span></a>
+			</div>
+			<!-- //공지사항 -->
+		</div>
+		<!-- //content -->
+		
+	</div>
+	<!-- /container -->
+	
+	</div>
+					</div>
+			</div>
+
+		<hr>
+			<!-- footer -->
+			<div class="footer_area">
+				<!-- footer -->
+	<a href="#" onclick="window.scrollTo(0,0);document.getElementById('_body').tabIndex=-1;document.getElementById('_body').focus();return false;" class="wrap_top">맨위로가기</a>
+	<div id="footer" class="g_footer">
+		<div class="co_footer">
+			<h2 class="blind">하위영역</h2>
+			<div class="co_info_site">
+				<a href="http://www.naver.com/rules/service.html" target="_blank" class="N=a:fot.agreement">네이버 이용약관</a><!--N=a:fot.agreement-->
+				<span class="co_bar">|</span>
+				<a href="http://pay.naver.com/provision?viewType=use" target="_blank" class="N=a:fot.payagreement">네이버페이 이용약관</a><!--N=a:fot.agreement-->
+				<span class="co_bar">|</span>
+				<a href="http://www.naver.com/rules/privacy.html" target="_blank" class="N=a:fot.privacy"><strong>개인정보처리방침</strong></a><!--N=a:fot.privacy-->
+				<span class="co_bar">|</span>
+				<a href="https://shopping.naver.com/user/legalbasis.nhn" target="_blank" class="N=a:fot.disclaimer">법적고지 및 주의사항</a><!--N=a:fot.disclaimer-->
+				<span class="co_bar">|</span>
+				<a href="http://join.shopping.naver.com/index.nhn" target="_blank" class="N=a:fot.join">입점안내</a><!--N=a:fot.join-->
+				<span class="co_bar">|</span>
+				<a href="" target="_blank" onclick="window.open('https://sell.smartstore.naver.com/#/home/about?tipModal=WINDOW_EXPOSURE&tap=style','쇼핑윈도 노출안내','width=708px, height=696px, menubar=no, status=no, toolbar=no'); return false;" class="_stopDefault  N=a:fot.shoppingw">쇼핑윈도 노출안내</a><!--N=a:fot.shoppingw-->
+				<span class="co_bar">|</span>
+				<a href="https://adcenter.shopping.naver.com/member/login/form.nhn" target="_blank" class="N=a:fot.ad">쇼핑파트너존</a><!--N=a:fot.ad-->
+				<span class="co_bar">|</span>
+				<a href="https://sell.smartstore.naver.com/#/home/about" target="_blank" class="N=a:fot.sfsell">스마트스토어센터</a><!--N=a:fot.sfsell-->
+				<span class="co_bar">|</span>
+				<a href="https://help.pay.naver.com/index.nhn" target="_blank"  class="N=a:fot.help">쇼핑&amp;페이 고객센터</a><!--N=a:fot.help-->
+			</div>
+			<p class="co_marketing">네이버㈜는 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 상품, 상품정보, 거래에 관한 의무와 책임은 판매자에게 있습니다.</p>
+			<address class="co_address">
+				<span class="co_item">사업자등록번호 : 220-81-62517</span>
+				<span class="co_item">통신판매업신고번호 : 제2006-경기성남-692호</span>
+				<span class="co_item">대표이사 : 한성숙</span>
+				<a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=2208162517" target="_blank" class="item">사업자등록정보확인</a>
+				<br />
+				<span class="co_item">주소 : 경기도 성남시 분당구 불정로 6 네이버 그린팩토리 13561</span>
+				<span class="co_item">대표전화 : 1588-3819</span>
+				<span class="co_item">
+					<a href="https://help.pay.naver.com/faq/alias/naver-gu.help" target="_blank"><strong>1:1문의 바로가기</strong></a>
+				</span>
+				<span class="co_item">호스팅 서비스 제공 : NAVER Business Platform</span>
+			</address>
+			<p class="co_copyright"><a href="http://www.naver.com" class="co_logo N=a:fot.naver" target="_blank">NAVER</a><!--N=a:fot.naver-->Copyright &copy; <strong><a href="http://www.navercorp.com/ko/index.nhn" class="N=a:fot.navercorp" target="_blank">NAVER Corp.</a><!--N=a:fot.navercorp--></strong> All Rights Reserved.</p>
+		</div>
+	</div>
+	<a href="#" class="co_view_mobile"><strong>모바일 버전으로 보기</strong></a>
+	<!-- //footer -->
+</div>
+			<!-- //footer -->
+		</div>
+
+	<div class="ie6_notice_wrap" style="display:none;" id="_ie6Alert">
+	<div class="ie6_notice">
+		<p class="blind">
+			<strong>이 PC는 보안에 취약한 익스플로러6을 사용중입니다. <br>
+			지금 바로 브라우저를 업그레이드 하세요!</strong><br>
+			익스플로러6 지원 중단 이후 지식쇼핑 서비스 이용이 다소 불편할 수 있습니다.<br>
+			안전한 인터넷 환경을 위해 최신 버전으로 업그레이드를 적극 권장합니다.</p>
+		<a href="http://campaign.naver.com/goodbye-ie6" target="_blank" class="btn"><span class="blind">굿바이 익스플로러6 캠페인 자세히 보기</span></a>
+		<a href="http://windows.microsoft.com/ko-KR/internet-explorer/downloads/ie" target="_blank" class="btn2"><span class="blind">익스플로러 다운로드 페이지로 이동</span></a>
+		<a href="#" class="btn_close_lpop _click[shop.layout.BrowserWarning.close('_ie6Alert'); return false;]"><span class="blind">레이어 닫기</span></a>
+		<div class="act"><input type="checkbox" id="no_notice" name="" class="input_chk _click[shop.layout.BrowserWarning.closeToday('_ie6Alert'); return false;]"> <label for="no_notice">오늘 하루 열지 않음</label></div>
+	</div>
+	<div class="shadow"></div>
+</div>
+
+
+<script type="text/javascript">var __phase__ = "REAL";</script>
+<script type="text/javascript" src="https://ssl.pstatic.net/imgshopping/cnsv/p/js/_home_common_v2.js"></script>
+<script type="text/javascript" src="https://ssl.pstatic.net/imgshopping/cnsv/p/js/_home_v4.js"></script>
+<script type="text/javascript" src="https://ssl.pstatic.net/imgshopping/cnsv/p/js/_home_masonry_v1.js"></script>
+<script type="text/javascript">
+	var __LOAD_EVENT_NAME__ = 'onpageshow' in window  ? 'pageshow' : 'load';
+
+	nsc="shopping2.home";nclk_evt=1;nclk_do();
+	lcs_do();
+	
+		var homeBase = null;
+		var _homeTplData = [];
+		var _homeTpl1List = [];       // tpl1 tplNo List
+		var _homeTpl1RandList = {};   // tpl1 random no List
+		var _homeTpl12List = [];      // tpl12 tplNo List
+		var _homeTpl12RandList = [];  // tpl12 random List
+
+	
+		jindo.$Fn(function() {
+
+			homeBase = new shop.home.base('5');
+			
+		}).attach(window, 'domready');
+	
+
+
+try {	
+	_homeTplData['121881'] = [];
+	_homeTpl1List.push('121881');
+	
+	_homeTpl1RandList['121881'] = 11; 
+
+	_homeTplData[121881][0] = {link:'https://shopping.naver.com/department/event/45791', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bq7qzwyso7.jpg', linkNewYn:'N', imgAlt:'백화점윈도 핫이슈페어 12월 9일부터 12월 11일까지 겨울 기프트 소품페어'};
+
+	_homeTplData[121881][1] = {link:'https://shopping.naver.com/outlet/event/45971', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bq7r50gdoa.jpg', linkNewYn:'N', imgAlt:'12월 9일 단 하루 엘에프 스퀘어 브랜드데이 업투 70퍼센트 세일'};
+
+	_homeTplData[121881][2] = {link:'https://shopping.naver.com/plan/details/381369', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bq7r6wamao.jpg', linkNewYn:'N', imgAlt:'뮬라웨어 브랜드데이 업투 80퍼센트 세일 12월 9일 단 하루'};
+
+	_homeTplData[121881][3] = {link:'https://swindow.naver.com/designer/specialEvent/detail/46237', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bp6ud46jzf.jpg', linkNewYn:'N', imgAlt:'디자이너윈도 다시는 만나보지 못할 디자이너 브랜드 최대 70 퍼센트 2019년 11월 28일부터 12월 13일까지'};
+
+	_homeTplData[121881][4] = {link:'https://shopping.naver.com/foreign/event/46163', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bp6uepbriy.jpg', linkNewYn:'N', imgAlt:'해외직구 멋스럽고 따뜻하게 십만 원대 브랜드 머플러 2019년 12월 2일부터 2020년 1월 2일까지'};
+
+	_homeTplData[121881][5] = {link:'https://swindow.naver.com/beauty/specialEvent/detail/45827', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bq7r8sp8dc.jpg', linkNewYn:'N', imgAlt:'뷰티윈도 솔직 포토 리뷰쓰고 포인트 더 받자 12월 2일부터 12월 16일까지 포토 동영상 리뷰 쓰면 네이버 포인트 추가 지급'};
+
+	_homeTplData[121881][6] = {link:'https://shopping.naver.com/living/handmade/event/46225', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bp6ugaryn0.jpg', linkNewYn:'N', imgAlt:'리빙윈도 보기만 해도 맑아지는 기분 공기 정화 식물 위클리 특가전 2019년 12월 9일부터 12월 15일까지'};
+
+	_homeTplData[121881][7] = {link:'https://shopping.naver.com/fresh/localfood/event/45902', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bnxf26k6w2.jpg', linkNewYn:'N', imgAlt:'리뷰전쟁 푸드윈도 푸드윈도 먹방러 선정되면 최대 30분에게 네이버페이 포인트 증정 11월 25일부터 12월 16일까지'};
+
+	_homeTplData[121881][8] = {link:'https://swindow.naver.com/kids/specialEvent/detail/45962', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bq7rapg3m9.jpg', linkNewYn:'N', imgAlt:'12월 9일 단 하루 이 가격 밀크마일 브랜드데이 업투 89퍼센트 세일'};
+
+	_homeTplData[121881][9] = {link:'https://shopping.naver.com/plan2/p/detail.nhn?seq=384106', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6br4kvh3hgq.jpg', linkNewYn:'N', imgAlt:'네이버 특별혜택 밀레 대형가전 기획전 네이버 단독 특가 구매 고객 사은품 증정 12월 9일부터 12월 15일까지'};
+
+	_homeTplData[121881][10] = {link:'https://swindow.naver.com/style/specialEvent/detail/45784', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bq7regdi3p.jpg', linkNewYn:'N', imgAlt:'브랜드관 단 3일만 브랜드대전 크리스마스 준비 완료 밀튼스텔리 데이 12월 9일부터 12월 11일까지'};
+
+	_homeTplData[121881][11] = {link:'https://swindow.naver.com/pet/specialEvent/detail/46667', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1206/6bq7rgf3v7v.jpg', linkNewYn:'N', imgAlt:'펫프리 모집 3탄 단골 고객 리뷰에 자신있다면 펫윈도 프로 리뷰어에 도전해보세요 12월 9일부터 12월 29일까지'};
+
+} catch(e) {}	
+
+
+
+
+try {
+	_homeTplData[121861] = [];
+	_homeTpl12List.push('121861');
+	
+	_homeTpl12RandList['121861'] = 3; 	
+		
+		_homeTplData[121861][0] = {link:'https://m.shopping.naver.com/plan/details/68198', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1104/5kq5i75jt4c.jpg', linkNewYn:'N', imgAlt: 'SBA와 함께하는 SEOUL SHOP 서울 우수기업 제품을 만나보세요!'};
+		
+		_homeTplData[121861][1] = {link:'https://m.shopping.naver.com/plan/details/68199', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1104/5kq5ia9q585.jpg', linkNewYn:'N', imgAlt: '경기도·경기테크노파크 경기행복샵 우수 제품으로 착한 소비하세요!'};
+		
+		_homeTplData[121861][2] = {link:'https://shopping.naver.com/plan2/p/detail.nhn?seq=260578', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/0605/1z7sh9wmmc0.jpg', linkNewYn:'N', imgAlt: '경상북도와 경상북도경제진흥원 경북고향장터 경북의 다양한 농특산물을 만나보세요!'};
+		
+		_homeTplData[121861][3] = {link:'https://m.shopping.naver.com/plan/details/68201', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1104/5kq5icc0fzw.jpg', linkNewYn:'N', imgAlt: '온라인 공동 브랜드관 다채몰 대구 지역의 제품을 만나보세요!'};
+		
+		_homeTplData[121861][4] = {link:'https://c11.kr/bqtl', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1126/63bn826f8lb.jpg', linkNewYn:'Y', imgAlt: '조리성능·소음 등 성능 차이 있어요~에어프라이어 행복드림에서 지금 바로 비교해보세요! 공정거래위원회 한국소비자원'};
+		
+		_homeTplData[121861][5] = {link:'https://shopping.naver.com/plan2/p/detail.nhn?seq=168705', imgUrl:'https://ssl.pstatic.net/static.checkout/cnsv/iu/home/19/0402/lbicv6inqx1.jpg', linkNewYn:'N', imgAlt: '울산광역시 울산경제진흥원 울산상회 울산중소기업들과 함께합니다'};
+		
+		_homeTplData[121861][6] = {link:'https://shopping.naver.com/plan2/p/detail.nhn?seq=68200', imgUrl:'https://ssl.pstatic.net/static.checkout/cnsv/iu/home/19/0402/lbicv6sk48d.jpg', linkNewYn:'N', imgAlt: '우수 상품 전문몰 강원마트 강원도 청정지역의 농산물을 직거래로 만나보세요!'};
+		
+		_homeTplData[121861][7] = {link:'https://shopping.naver.com/plan2/p/detail.nhn?seq=373889', imgUrl:'https://ssl.pstatic.net/imgshopping/cnsv/iu/home/19/1101/5i38y0r88qw.jpg', linkNewYn:'N', imgAlt: '농식품부 농촌진흥청 농식품 상생협력관 산지에서 직접 제조한 우수한 농식품!'};
+	
+} catch(e) {}
+
+
+
+		//shop.layout.BrowserWarning.ie('_ie6Alert', '6');
+	
+
+
+
+	
+	var wrapAreaEventDelegator = new shop.event.Delegator(jindo.$Element(document.body), new Array("click", "change", "mousemove", "mouseover", "mouseout", "keyup", "mousedown", "mouseup", "contextmenu"));
+</script><script type="text/javascript" src="https://ssl.pstatic.net/imgshopping/cnsv/p/js/_cnsv.commons_v1.js"></script>
+<script type="text/javascript" src="https://swindow.naver.com/gnb/js?svcType=HOME&extMode=Y&ts=201912091216" charset="utf-8"></script>
+	<script type="text/javascript">
+		var originDomain = document.origin;
+		if (originDomain && (originDomain.indexOf('beta') > -1 || originDomain.indexOf('alpha') > -1 || originDomain.indexOf('dev') > -1)) {
+			if (gsMyRcntProdUrl) {
+				gsMyRcntProdUrl = originDomain + "/my/home";
+			}
+			if (gsMyStoreUrl) {
+				gsMyStoreUrl = originDomain + "/my/p/store/list.nhn";
+			}
+			if (gsMyZzimProdUrl) {
+				gsMyZzimProdUrl = originDomain + "/my/keep-products";
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<br><br><div class="animation_canvas"><!-- DB에서 가져옴 -->
+    <div class="slider_panel">
+        <% data.forEach(function (item, index) { %>
+            <img src="<%=item.img%>" class="slider_image"/>
+        <% }); %>
+    </div>
+    <div class="slider_text_panel">
+        <% data.forEach(function (item, index) { %>
+            <div class="slider_text">
+                <h1><%=item.text_title%></h1>
+                <p><%=item.text_contents%></p>
+            </div>
+        <% }); %>
+    </div>
+    <div class="control_panel">
+        <% data.forEach(function (item, index) { %>
+            <div class="control_button"></div>
+        <% }); %>
+    </div>
+</div>

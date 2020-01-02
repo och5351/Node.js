@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>JS 2학기 과제 21521134 오찬해</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../scripts/mainScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/card.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/slideCss.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/contentsCSS.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/menuCSS.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        <%- include ('../menuBar.ejs') %>   
+        <%if(loginSess != '0' && loginInfo.grade >=3){%>
+            <a class="btn btn-success" href="/admin/marketAdd" style="float: right;"><h3>&nbsp;+&nbsp;</h3></a>
+            <br><br><br>
+        <% }%> 
+        <div class="contents">  <!-- 내용 -->   
+            <% var count=0;%>
+            <%if(data=='0'){%>           
+                <h2>현재 강의 상품이 없습니다.</h2>
+            <%}else{%>
+            <% data.forEach(function (item, index) {%>
+                <%count++%>
+                <div class="card">
+                    <%if(loginSess != '0' && loginInfo.grade >=3){%>
+                        <%if(loginInfo.grade == 3){%>
+                            <%if(item.name == loginInfo.name){%>
+                                <button onclick="location.href='/admin/marketAdd/delete/<%-item.seq%>'">X</button>
+                            <%}%>
+                        <%}else if(loginInfo.grade == 4){%>
+                            <button onclick="location.href='/admin/marketAdd/delete/<%-item.seq%>'">X</button>
+                        <%}%>
+                    <% }%>
+                    <img src="../<%=item.img%>" alt="img" style="width:100%;height: 200px;"><br>
+                    <h2><%=item.title%></h2>
+                    <p class="title"><%=item.name%></p>
+                    <p><%=item.memo%></p>
+                    <button class="marketDelete" onclick="location.href='/market/marketDetail/<%=item.seq%>'">상세보기</button>
+                </div>    
+                <%if(count%4==0){%>
+                    <div style="float: right;"></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br<br><br><br><br>
+                <%}%>            
+            <%});}%>
+                
+        </div>
+        <%if(count>3&&count%4!=0){%>   
+        <br><br><br><br><br><br><br><br<br><br><br><br><br<br><br><br><br><br><br<br><br><br><br><br><br><hr>
+        <%}else{%>
+            <br><br><br><br><hr>
+            <%}%>
+        <div class="footer" style="width: 100%;">
+            <%- include('../footer.ejs')%>
+        </div>                                    
+    </div>
+</body>
+</html>

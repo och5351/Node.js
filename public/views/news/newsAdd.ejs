@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>JS 2학기 과제 21521134 오찬해</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../scripts/mainScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/card.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/slideCss.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/contentsCSS.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/menuCSS.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        <%- include ('../menuBar.ejs') %>     
+        <div class="contents">  <!-- 내용 --> 
+            <div class="insertSubject">
+                <form method="POST" enctype="multipart/form-data">
+                    <fieldset style ="width:1000px">
+                        <legend style="text-align: center;">홍보 추가</legend><br>
+                        <label><input type="text" class="form-control" id="newsTitle" name="newsTitle" placeholder="홍보할 제목을 입력하세요." style="width:1000px"/></label>  
+                        <label><input type="text" class="form-control" id="newsMemo" name="newsMemo" placeholder="홍보할 내용에 대한 간단 설명을 입력하세요." style="width:1000px"/></label>  
+                        <label><textarea class="form-control" id="newsContents" name="newsContents" placeholder="홍보할 내용에 대한 상세 설명을 입력하세요." cols="40" rows="8" style="width:1000px"></textarea></label> 
+                        
+                        <label style="float: right;"><input type='file' id="userfile" name='userfile'/></label><br><br><br>
+                        <label><input type="submit" class="btn btn-success" style="width: 100px;" value="추가"></input></label>                          
+                    </fieldset>
+                </form>
+            </div>   
+        </div><br><br>
+        <hr>
+        <div class="footer">
+            <%- include('../footer.ejs')%>
+        </div>                                    
+    </div>
+</body>
+</html>

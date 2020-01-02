@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>JS 2학기 과제 21521134 오찬해</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../scripts/mainScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/slideCss.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/contentsCSS.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/menuCSS.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        <%- include ('../menuBar.ejs') %>       
+        <div class="contents">  <!-- 내용 --> 
+            <script type="text/javascript">
+                var fail = '<%-fail %>';    
+                console.log(fail);
+                if(fail == '1'){
+                    alert('로그인 실패');
+                }
+            </script><br><br>
+            <div class="loginBox"><!--로그인 & 회원가입-->
+                <form id="login_form" method="POST">
+                    <fieldset style ="width:500px">
+                        <legend style="text-align: center;">Login</legend>
+                        <label><input type="text" class="form-control" name="id" id="id" placeholder="아이디" style="width: 500px;"/></label><br>
+                        <label><input type="password" class="form-control" name="pw" id="pw" placeholder="비밀번호" style="width: 500px;"/></label><br>                        
+                        <label><input type="submit" class="btn btn-info" value="로그인" style="width: 500px;"/></label><br>                        
+                        <label></label><a type="button" class="btn btn-primary" style="width: 500px;" href="/signUpPolicy">회원가입</a></label>                          
+                    </fieldset>
+                </form>
+            </div>          
+        </div>   
+        <br><br><hr>
+        <div class="footer">
+            <%- include('../footer.ejs')%>
+        </div>                                    
+    </div>
+</body>
+</html>
+
+

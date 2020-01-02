@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>JS 2학기 과제 21521134 오찬해</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="scripts/mainScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/slideCss.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/contentsCSS.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/menuCSS.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="firstMenuBar">
+            <div class="title">
+                <h1>Prof.Song's EduShop</h1>
+            </div>
+            <br>
+            <div class="login">
+            </div>
+        </div>
+        <br><br>
+        <div class="secondMenuBar">
+            <div class="row">
+                <div class="col-xs-6 col-md-1"></div>
+                <div id="news" class="col-xs-6 col-md-2" ><p>새소식</p></div>
+                <div id="notices" class="col-xs-6 col-md-2"><p>공지사항</p></div>
+                <div id="market" class="col-xs-6 col-md-2"><p>상점</p></div>
+                <div id="community" class="col-xs-6 col-md-2"><p>커뮤니티</p></div>
+                <div id="events" class="col-xs-6 col-md-2"><p>이벤트</p></div>
+            </div>
+        </div><br><br><br>        
+        <div class="contents">  <!-- 내용 --> 
+            <div class="loginBox"><!--로그인 & 회원가입-->
+                <form id="login_form" method="POST">
+                    <fieldset>
+                        <legend>Login</legend>
+                        <label><input type="text" class="form-control" name="id" placeholder="아이디"/></label><br>
+                        <label><input type="password" class="form-control" name="pw" placeholder="비밀번호"/></label><br>
+                        <input type="submit" class="btn btn-default" value="로그인" style="float:left;"/>
+                        <button type="button" class="btn btn-default" style="float:right;">회원가입</button>
+                    </fieldset>
+                </form>
+            </div>          
+            <div class="animation_canvas"><!-- 해야할 것! 관리자 페이지에서 DB를 통하여 넣은 정보로 가져오기 -->
+                <div class="slider_panel">
+                    <img src="images/javascript.png" class="slider_image"/>
+                    <img src="images/java.jpg" class="slider_image"/>
+                    <img src="images/compiler.png" class="slider_image"/>
+                    <img src="images/programmingLanguage.jpg" class="slider_image"/>
+                </div>
+                <div class="slider_text_panel">
+                    <div class="slider_text">
+                        <h1>자바스크립트</h1>
+                        <p>끝내줍니다.</p>
+                    </div>
+                    <div class="slider_text">
+                        <h1>자바</h1>
+                        <p>끝내줍니다.</p>
+                    </div>
+                    <div class="slider_text">
+                        <h1>컴파일러</h1>
+                        <p>끝내줍니다.</p>
+                    </div>
+                    <div class="slider_text">
+                        <h1>프로그래밍 언어론</h1>
+                        <p>끝내줍니다.</p>
+                    </div>
+                </div>
+                <div class="control_panel">
+                    <div class="control_button"></div>
+                    <div class="control_button"></div>
+                    <div class="control_button"></div>
+                    <div class="control_button"></div>
+                </div>
+            </div>
+        </div>   
+        <br><br><br><br><hr>
+        <div class="footer">
+                <h3><em>Category</em></h3>
+                
+                <div id="category_output">
+            </div>                                    
+    </div>
+
+
+    
+</body>
+</html>

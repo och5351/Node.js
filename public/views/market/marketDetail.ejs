@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>JS 2학기 과제 21521134 오찬해</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/mainScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../styles/contentsCSS.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/menuCSS.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        <%- include ('../menuBar.ejs') %>   
+        <div class="contents">  <!-- 내용 -->   
+            <% var name = '' %>
+            <% data.forEach(function (item, index) {%>
+                <div class="marketDetailWrap" style="width:auto;">
+                        <div id="marketDetailIMG" style="float:left; padding-right:5%">
+                            <img src="../../<%=item.img%>" alt="상세페이지 IMG" style="width:500px;height: 400px;"/>
+                        
+                        </div>
+                        <div id="marketDetailTop" style="text-align: left;">
+                            <fieldset>
+                                <div id="marketDetailTitle" style="padding-top: 10%;">
+                                    <h2 style="float: left;">강의명 &nbsp;:&nbsp;&nbsp; </h2>
+                                    <%if(loginInfo.grade >= 3){%>
+                                        <input type="text" class="form-control" id="mUTitle" value="<%=item.title%>">
+                                    <%}else{%>
+                                        <h3 id="mDTitle" style="padding-top: 1%;"><%=item.title%></h3>
+                                    <%}%>       
+                                                         
+                                </div><br>
+                                <div id="marketDetailMan">
+                                    <h2 style="float: left;">강사 &nbsp;:&nbsp;&nbsp; </h2>
+                                    <%if(loginInfo.grade >= 3){%>
+                                        <input type="text" class="form-control" id="mUName" value="<%=item.name%>">
+                                    <%}else{%>
+                                        <h3 style="padding-top: 1%;"><%=item.name%></h3>
+                                    <%}%>
+                                    
+                                </div><br><br>
+                                <div id="marketDetailMemo"><br>
+                                    <dl>
+                                        <dt>강의 간단 소개</dt><br>
+                                        <%if(loginInfo.grade >= 3){%>
+                                            <input type="text" class="form-control" id="mUMemo" value="<%=item.memo%>">
+                                        <%}else{%>
+                                            <dd style="padding-left: 3%;"><%=item.memo%><dd>    
+                                        <%}%>
+                                       
+                                    </dl>
+                                </div>                                 
+                               
+                            </fieldset>
+                        </div>                    
+                </div><br><br><hr><br>
+                <div id="marketDetailCenter" style="width:auto;text-align: left;padding-left: 5%;">
+                        <h3>강의 설명</h3><br><br>
+                        <%if(loginInfo.grade >= 3){%>
+                            <textarea class="form-control" id="mUContents" cols="40" rows="8"><%=item.contents%></textarea>
+                        <%}else{%>
+                            <p style="padding-left: 3%;"><%=item.contents%><p>    
+                        <%}%>
+                </div><br><br><br><hr><br>
+                <div id="marketDetailBottom" style="padding-bottom: 1%;" >
+                    <div style="float:left;width:50%">
+                        <h2 style="float: left;padding-left: 20%;">인원 제한 &nbsp;:&nbsp;&nbsp; </h2>
+                        <%if(loginInfo.grade >= 3){%>
+                            <div class="form-inline"><div class ="form-group"><label></label><h3 style="padding-top: 1%;"><%=item.num%>/</h3></label> <input type="number" class='form-control' id="mULimit_num" width="1%" value="<%=item.limit_num%>"></div></div>
+                        <%}else{%>
+                            <h3 style="padding-top: 1%;"><%=item.num%>/<%=item.limit_num%></h3>     
+                        <%}%>
+                        
+                    </div>   
+                    <div style="float: right;width:50%">
+                        <h2 style="float: left;padding-left: 10%;">수강료 &nbsp;:&nbsp;&nbsp; </h2>
+                        <%if(loginInfo.grade >= 3){%>
+                            <label><input type="number" class="form-control" id="mUPrice" value="<%=item.price%>"></label>
+                        <%}else{%>
+                            <h3 style="padding-top: 1%;"><%=item.price%></h3>     
+                        <%}%>                        
+                    </div>    
+                </div>
+                <script>
+                    var mDTitle = '<%=item.title%>';
+                    var mDName = '<%=item.name%>';
+                    var mDCode = '<%=item.code%>';
+                    var loginSess = '<%=loginSess%>'
+                    var seq = '<%=item.seq%>'
+                    var mUCode = '<%=item.code%>'
+                </script>
+                <br><br><hr>
+                <%name = item.name; %>
+            <%});%>
+            <br><br><br><br><br><br>
+            <%if(loginInfo.grade == 3){%>
+                <%if(loginInfo.name == name){%>
+                    <button type="button" id="updateSubject" class="btn btn-danger btn-lg" value="적용">적용</button>
+                <%}else{%>
+                <%}%>
+            <%}else if(loginInfo.grade==4){%>  
+                    <button type="button" id="updateSubject" class="btn btn-danger btn-lg" value="적용">적용</button>
+            <%}else if(buy=='0'){%>
+                <button type="submit" id="accessSubject" class="btn btn-success btn-lg" value="강의신청">강의신청</button>
+            <%}else{%>
+                <button type="submit" id="deleteSubject" class="btn btn-danger btn-lg" value="신청취소">신청취소</button>
+            <%}%>
+        </div>   
+    
+        <br><br><br><br><hr>
+        <div class="footer">
+            <%- include('../footer.ejs')%>
+        </div>                                    
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>JS 2학기 과제 21521134 오찬해</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/mainScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../styles/slideCss.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/contentsCSS.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/menuCSS.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+    <body>
+        <div id="wrap">
+            <%- include ('../menuBar.ejs') %>       
+            <div class="contents">  <!-- 내용 --> 
+               <h2>수익 통계</h2><br><br>
+                <%if(data != '0'){%>
+                    <table width="100%">
+                    <tr>
+                        <th></th>    <th>과목<br><br></th>    <th>강사<br><br></th>    <th>강의료(월)<br><br></th>
+                        <th>수강생<br><br></th> <th>계<br><br></th>
+                    </tr>
+                    <% var count = 0; var allPrice = 0; var sumPrice = 0; var sumNum = 0;%>
+                    <% data.forEach(function (item, index) { %>
+                        <% count++; %>
+                    <tr>
+                        <td style="width:10%;"><%= count %><br><br></td>
+                        <td style="width:60%;text-align: left;"><a class="btn btn-default" href="/market/marketDetail/<%= item.seq %>"><%= item.title %></a><br><br></td>
+                        <td><%= loginInfo.name %><br><br></td>
+                        <td><%= item.price%><br><br></td>
+                        <td><%= item.num %><br><br></td>
+                        <% allPrice = item.price * item.num; sumPrice += item.price; sumNum += item.num;%>
+                        <td><%= allPrice %><br><br></td>
+                    </tr>
+                    <% }); %>
+                    <tr>
+                        <td>총계</td>
+                        <td></td>
+                        <td></td>
+                        <td><%-sumPrice%></td>
+                        <td><%-sumNum%></td>
+                        <td><%-allPrice%></td>
+                    </tr>
+                    </table>   
+                <%}else{%>    
+                    <h2>현재 게시물이 없습니다.</h2>
+                <%}%>
+            </div>   
+            <br><br><br><br><hr>
+            <div class="footer">
+                <%- include('../footer.ejs')%>
+            </div>                                    
+        </div>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>JS 2학기 과제 21521134 오찬해</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/mainScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../styles/slideCss.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/contentsCSS.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/menuCSS.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+    <body>
+        <div id="wrap">
+            <%- include ('../menuBar.ejs') %>       
+            <div class="contents">  <!-- 내용 --> 
+                <div class="signUpPage">
+                    
+                    <%if(signUpAccess == 'ok'){ %>
+                        <h1>회원가입</h1><br><br><br>
+                        <form method="POST">
+                            <fieldset style="display: inline-block;width: 700px">
+                                <label><input type="text" class="form-control" name="sId" id="sId" placeholder="아이디(영문 숫자만 입력 가능합니다.)" style="width: 450px;"/><small id="idCheckD" style="float:left;">아이디 중복확인 버튼을 눌러주세요.</small><a id="idCheckBtn" class="btn btn-primary btn-sm" style="float: right;" >중복확인</a></label><br>
+                                <label><input type="password" class="form-control" name="sPw" id="sPw" placeholder="비밀번호" style="width: 450px;"/></label><br>
+                                <label><div id="resPwResult" style="float:left;"></div></label><br>
+                                <label><input type="password" class="form-control" name="resPw" id="resPw" placeholder="비밀번호 확인" style="width: 450px;"/></label><br><br>                               
+                                <label><input type="text" class="form-control" name="sName" id="sName" placeholder="이름" style="width: 450px;"/></label><br><br>
+                                <label><input type="text" class="form-control" name="sRegister" id="sRegister" placeholder="주소" style="width: 450px;"/></label><br><br>
+                                <label><input type="text" class="form-control" name="sPhone" id="sPhone" placeholder="전화번호" style="width: 450px;"/></label><br><br><br>
+                                <button type="submit" class="btn btn-primary" id="registerSubmitBtn" value="제출">제출</button>
+                            </fieldset>
+                        </form>
+                    <%}else if(signUpAccess == 'no'){%>
+                        <h1>회원가입</h1><br><br><br>
+                        <form method="POST">
+                            <fieldset style="display: inline-block;">
+                                <div class="checkbox" style="text-align: left;">
+                                    <label><input type="checkbox" name="agree" id="signCheck"> (필수) 서비스 이용 동의</label><br><br>
+                                    <label><input type="checkbox" name="agree" id="signCheck2"> (필수) 개인정보 수집 및 이용 동의</label><br><br><br><br>
+                                    <input type="hidden" name="access" value="ok">
+                                </div>
+                                <input type="submit" class="btn btn-primary" id="signAgreeBtn" value="동의 후 회원가입"/>
+                            </fieldset>
+                        </form>
+                    <%}else{%>
+                        <h1>가입을 축하드립니다.</h1><br>
+                        <p>Prof.Song's EduShop에 회원이 되어 주심을 진심으로 감사드립니다.</p>
+                        <p>아래 로그인 버튼을 통해 로그인을 하여 주시길 바랍니다.</p><br>
+                        <a class="btn btn-info" href="/logIn">로그인</a>
+                    <%}%>
+                </div>
+            </div>   
+            <br><br><br><br><hr>
+            <div class="footer">
+                <%- include('../footer.ejs')%>
+            </div>                                    
+        </div>
+    </body>
+</html>

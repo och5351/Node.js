@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Admin</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../scripts/mainScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/slideCss.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/contentsCSS.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/menuCSS.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        <%- include ('../menuBar.ejs') %>       
+        <div class="contents">  <!-- 내용 --> 
+            <fieldset>
+                <legend><h3>설정 목록</h3></legend>                
+                <a class="btn btn-default" href="/admin/memManage">회원관리</a>
+                <a class="btn btn-default" href="/market/<%=loginInfo.name%>">내 강의 관리</a>
+                <a class="btn btn-default" href="/price/priceMain">수익 통계</a>
+            </fieldset>
+        </div>   
+        <br><br><br><br><hr>
+        <div class="footer">
+            <%- include('../footer.ejs')%>
+        </div>                                    
+    </div>
+</body>
+</html>

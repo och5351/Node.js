@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>JS 2학기 과제 21521134 오찬해</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/mainScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../styles/contentsCSS.css"/>
+    <link rel="stylesheet" type="text/css" href="../../styles/menuCSS.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        <%- include ('../menuBar.ejs') %>   
+        <div class="contents">  <!-- 내용 -->   
+            <% var seq = ''; var id = '';%>
+            <% data.forEach(function (item, index) {%>
+                <table width="100%" style="text-align: left;">
+                    <tr>
+                        <th><h2 style="float: left;"><%-item.title%></h2><p style="float: right;"><%-item.date%></p><br><br><hr></th>
+                    </tr>
+                    <tr>
+                        <td>
+                           <%-item.id%><hr><br><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><%-item.contents%></p>
+
+                        </td>
+                    </tr>
+                </table>
+                
+                <%seq = item.seq; id = item.id;%>
+            <%});%>
+            <br><br><br><br><br><br>
+                <%if(loginSess == 1){%>
+                    <%if(id == loginInfo.id || loginInfo.grade >=3){%>
+                        <script>var seq = '<%-seq%>';</script>
+                        <button type='button' id="noticeDelete" class="btn btn-danger btn-lg" value="적용">삭제</button>
+                    <%}%>
+                <%}%>
+           
+        </div>   
+    
+        <br><br><br><br><hr>
+        <div class="footer">
+            <%- include('../footer.ejs')%>
+        </div>                                    
+    </div>
+</body>
+</html>
